@@ -47,18 +47,21 @@
     <p>  <a href="" id="call" class="button">Call</a>
 </p>
 
-        <div id="next">
-        
-        </div>
+      
                 <div id="prev">
         
         </div>
-
+ <div id="preview">
+     <p>Up Next</p>
+            <p id="next"></p>
+        </div>
     </div>
     
     <div id="card2">
     
     </div>
+    
+     
 </body>
 
 
@@ -144,6 +147,10 @@ text-decoration: none;
         text-align: center;
         border:1px solid #0452a0;
     }
+    #preview{
+        color:#0452a0;
+        border:2px solid #0452a0;
+    }
 </style>
 
 <script>
@@ -199,12 +206,14 @@ var csvData = document.getElementById('url').value;
         var cell = data.data[index]["Cell"];
         
       var add  = data.data[index]["Address"]+", "+data.data[index]["City"]+" AZ "+data.data[index]["Zip5"];
+      var nextAdd  = data.data[index+1]["Address"]+", "+data.data[index+1]["City"]+" AZ "+data.data[index+1]["Zip5"];
 
         
       document.getElementById('name').innerHTML=name;
                 document.getElementById('call').href="tel:"+cell;
                 document.getElementById('direc').href="https://maps.google.com/?q="+add;
                 document.getElementById('add').innerHTML=add;
+                document.getElementById('next').innerHTML=nextAdd;
 
 
  document.getElementById('send').href="sms:"+cell+"&body=Hi! We've delivered your InvestInEd petition form!";

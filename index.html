@@ -47,6 +47,13 @@
     <p>  <a href="" id="call" class="button">Call</a>
 </p>
 
+        <div id="next">
+        
+        </div>
+                <div id="prev">
+        
+        </div>
+
     </div>
     
     <div id="card2">
@@ -74,8 +81,7 @@
         color:white;
         font-family: Georgia,sans-serif;
     }
-    #name{
-    }
+ 
     #send{
         background-color: #ffc94f;
         border-color:#d3781c;
@@ -117,6 +123,7 @@ text-decoration: none;
         padding:25px;
         background-color: #efefef;
         height:100%;
+        width: 100%;
     }
     #bar{
         background-color: #5ebedb;
@@ -195,9 +202,7 @@ var csvData = document.getElementById('url').value;
 
         
       document.getElementById('name').innerHTML=name;
- 
                 document.getElementById('call').href="tel:"+cell;
-
                 document.getElementById('direc').href="https://maps.google.com/?q="+add;
                 document.getElementById('add').innerHTML=add;
 

@@ -1,0 +1,175 @@
+<head>
+    <meta name="viewport" content="width=device-width">
+
+    <script src="papaparse.min.js"></script>
+    <title>Hermes</title>
+</head>
+<body>
+    <div id="bar"><span id="logo">Hermes</span>  <input type="file" name="File Upload" id="txtFileUpload" accept=".csv" />
+    <button onclick="initLoad()" class="button">Load</button>
+    </div>
+    
+    
+    <div id="card">
+        
+        <h2 id="name">Upload a .CSV file to get started!</h1>
+<p id="add">100 E Address St</p>
+                <p>Phone: <a href="" id="cell">480-123-4567</a></p>
+
+            <select name="list" id="list" onchange="select()"></select>
+
+        <div id="r">
+        <button class="button" id="backward" onclick="back()">&#x219e;</button>
+                    </div>
+
+        <div i="l">        
+            <button class="button" id="forward" onclick="f()">&#x21a0;</button>
+</div>
+
+                    <br>
+
+      <a href="sms:+14806526977&body=Hi!%2520We've%2520delivered%2520your%2520petition%2520form!" id="send" class="button" onclick="up()">Send Delivery Confirmation</a>
+    </div>
+</body>
+
+
+<style>
+    body{
+        width:100%;
+        text-align: center;
+        padding:0px;
+        margin:0px;
+        font-family: sans-serif;
+        background-color:#3e3e3e;
+    }
+    #logo{
+        font-size: 20pt;
+        font-weight: bold;
+        font-style: italic;
+        float: left;
+        color:white;
+    }
+    #send{
+        background-color: #ff987f;
+        border-color:#d3401c;
+        color:black;
+    }
+        #forward,#backward{
+        background-color: #ff987f;
+        border-color:#d3401c;
+        color:black;
+            font-size:20pt;
+            position: relative;
+            height:150px;
+    }
+    .button{
+                padding:10px;
+        border:0px;
+        border-bottom: 3px solid;
+        border-radius: 5px;
+        margin:5px;
+text-decoration: none;
+    }
+    
+    #card{
+        padding:25px;
+        background-color: lightgray;
+        margin:10px;
+        border:2px solid gray;
+        height:500px;
+    }
+    #bar{
+        background-color: #ff987f;
+        padding:10px;
+        width:100%;
+        margin:0;
+    }
+    
+    #backward{
+        float:left;
+    }
+    
+    #forward{
+        float:right;
+    }
+</style>
+
+<script>
+//Get CSV file
+document.getElementById('txtFileUpload').addEventListener('change', upload, false);
+  var data = null;
+    var index = 0;
+
+//Parse CSV
+ function upload(evt) {
+     
+
+ var file = evt.target.files[0];
+ var reader = new FileReader();
+ reader.readAsText(file);
+ reader.onload = function(event) {
+ var csvData = event.target.result;
+ 
+ data = Papa.parse(csvData, {header : true});
+ 
+ console.log(data);
+ 
+ };
+ reader.onerror = function() {
+ alert('Unable to read ' + file.fileName);
+ };
+ }
+    
+    function initLoad(){
+        loadProf();
+              for(let i=0;i<data.data.length;i++){
+         document.getElementById('list').innerHTML+="<option value='"+i+"'>"+data.data[i]["Address"]+"</option>";
+  
+ }
+    }
+    
+    function loadProf(){ //Display data
+        var name = data.data[index]["First Name"]+" "+data.data[index]["Last Name"];
+        var cell = data.data[index]["Cell"];
+        
+        var add = data.data[index]["Address"]+", "+data.data[index]["City"]+" AZ";
+
+        
+      document.getElementById('name').innerHTML=name;
+        document.getElementById('cell').innerHTML=cell;
+        document.getElementById('cell').href=cell;
+        document.getElementById('add').innerHTML=add;
+
+ document.getElementById('send').href="sms:"+cell+"&body=Hi!%2520We've%2520delivered%2520your%2520petition%2520form!";
+
+   
+    }
+       function back(){ //move the index back one
+        
+              if(index<0){
+            index=0;
+        }
+           index--;
+        loadProf();
+                   document.getElementById("list").selectedIndex = index;
+
+          
+    }
+    
+    function f(){ //move the index forward one
+        index++;
+        loadProf();
+        document.getElementById("list").selectedIndex = index;
+    
+    }
+    
+    function select(){ //select address from dropdown
+
+var x = document.getElementById("list").selectedIndex;
+                   index = x;
+                    loadProf();
+
+
+    }
+ 
+</script>

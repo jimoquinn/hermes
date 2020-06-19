@@ -1,5 +1,7 @@
 <head>
     <meta name="viewport" content="width=device-width">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
 
     <script src="papaparse.min.js"></script>
     <title>Hermes</title>
@@ -11,12 +13,13 @@
     
     
     <div id="card">
-        
+        <p id="count"></p>
         <h2 id="name">Upload a .CSV file to get started!</h1>
-<p id="add">100 E Address St</p>
+                    <select name="list" id="list" onchange="select()"></select>
+
+<p><a href="" id="add" target="_blank">100 E Address St</a></p>
                 <p>Phone: <a href="" id="cell">480-123-4567</a></p>
 
-            <select name="list" id="list" onchange="select()"></select>
 
         <div id="r">
         <button class="button" id="backward" onclick="back()">&#x219e;</button>
@@ -60,7 +63,7 @@
         color:black;
             font-size:20pt;
             position: relative;
-            height:150px;
+            height:200px;
     }
     .button{
                 padding:10px;
@@ -69,12 +72,12 @@
         border-radius: 5px;
         margin:5px;
 text-decoration: none;
+        font-weight: bold;
     }
     
     #card{
         padding:25px;
-        background-color: lightgray;
-        margin:10px;
+        background-color: #efefef;
         border:2px solid gray;
         height:500px;
     }
@@ -122,25 +125,36 @@ document.getElementById('txtFileUpload').addEventListener('change', upload, fals
     
     function initLoad(){
         loadProf();
-              for(let i=0;i<data.data.length;i++){
-         document.getElementById('list').innerHTML+="<option value='"+i+"'>"+data.data[i]["Address"]+"</option>";
-  
- }
+        
+              for(let i=0;i<data.data.length;i++){ 
+         document.getElementById('list').innerHTML+="<option value='"+i+"'>"+data.data[i]["Address"]+"</option>"; 
+              }
+    
+
+    }
+    
+    function progress(){
+            document.getElementById('count').innerHTML=index+1+"/"+data.data.length;
+
     }
     
     function loadProf(){ //Display data
+                progress();
+
         var name = data.data[index]["First Name"]+" "+data.data[index]["Last Name"];
         var cell = data.data[index]["Cell"];
         
-        var add = data.data[index]["Address"]+", "+data.data[index]["City"]+" AZ";
+        var add = data.data[index]["Address"]+", "+data.data[index]["City"]+" AZ "+data.data[index]["Zip5"];
 
         
       document.getElementById('name').innerHTML=name;
         document.getElementById('cell').innerHTML=cell;
         document.getElementById('cell').href=cell;
         document.getElementById('add').innerHTML=add;
+                document.getElementById('add').href="https://maps.google.com/?q="+add;
 
- document.getElementById('send').href="sms:"+cell+"&body=Hi!%2520We've%2520delivered%2520your%2520petition%2520form!";
+
+ document.getElementById('send').href="sms:"+cell+"&body=Hi! We've delivered your petition form!";
 
    
     }

@@ -1,8 +1,8 @@
 <head>
 <meta name = "viewport" content = "user-scalable=no, width=device-width">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <link rel="apple-touch-icon" href="/icon.png">
-    <link rel="shortcut icon" href="/icon.png">
+    <link rel="apple-touch-icon" href="icon.png">
+    <link rel="shortcut icon" href="icon.png">
 
 
 
@@ -12,6 +12,9 @@
 <body>
     <div id="bar"><span id="logo">H</span>  <input type="file" name="File Upload" id="txtFileUpload" accept=".csv" />
     <button onclick="initLoad()" class="button">Load</button>
+        <input type="text" placeholder="url" id="url">
+            <button onclick="upload2()" class="button">URL load</button>
+
     </div>
     
     
@@ -41,6 +44,10 @@
 </p>
 
     </div>
+    
+    <div id="card2">
+    
+    </div>
 </body>
 
 
@@ -52,7 +59,7 @@
         padding:0px;
         margin:0px;
         font-family: sans-serif;
-        background-color:#3e3e3e;
+        background-color:#a7a7a7;
     }
     #logo{
         font-size: 25pt;
@@ -129,8 +136,6 @@ document.getElementById('txtFileUpload').addEventListener('change', upload, fals
     var index = 0;
 //Parse CSV
  function upload(evt) {
-     
-
  var file = evt.target.files[0];
  var reader = new FileReader();
  reader.readAsText(file);
@@ -142,10 +147,20 @@ document.getElementById('txtFileUpload').addEventListener('change', upload, fals
  console.log(data);
  
  };
+     
+
+     
  reader.onerror = function() {
  alert('Unable to read ' + file.fileName);
  };
  }
+    
+          function upload2() {
+var csvData = document.getElementById('url').value;
+ data = Papa.parse(csvData, {header : true, download:true});
+ console.log(data);
+ 
+ };
     
     function initLoad(){
         loadProf();      
@@ -175,7 +190,7 @@ document.getElementById('txtFileUpload').addEventListener('change', upload, fals
                 document.getElementById('add').innerHTML=add;
 
 
- document.getElementById('send').href="sms:"+cell+"&body=Hi! We've delivered your petition form!";
+ document.getElementById('send').href="sms:"+cell+"&body=Hi! We've delivered your InvestInEd petition form!";
     }
 
     function back(){ //move the index back one

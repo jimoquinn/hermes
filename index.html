@@ -157,6 +157,8 @@ document.getElementById('txtFileUpload').addEventListener('change', upload, fals
     
           function upload2() {
 var csvData = document.getElementById('url').value;
+               console.log(csvData);
+
  data = Papa.parse(csvData, {download:true, header : true});
  console.log(data);
  

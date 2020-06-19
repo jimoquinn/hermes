@@ -1,6 +1,8 @@
 <head>
-    <meta name="viewport" content="width=device-width">
+<meta name = "viewport" content = "user-scalable=no, width=device-width">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-icon" href="/icon.png">
+
 
 
     <script src="papaparse.min.js"></script>
@@ -14,11 +16,8 @@
     
     <div id="card">
         <p id="count"></p>
-        <h2 id="name">Upload a .CSV file to get started!</h1>
+        <h1 id="name">Upload a .CSV file to get started!</h1>
                     <select name="list" id="list" onchange="select()"></select>
-
-<p><a href="" id="add" target="_blank">100 E Address St</a></p>
-                <p>Phone: <a href="" id="cell">480-123-4567</a></p>
 
 
         <div id="r">
@@ -28,15 +27,23 @@
         <div i="l">        
             <button class="button" id="forward" onclick="f()">&#x21a0;</button>
 </div>
+     <br>
 
+    <p>  <a href="" id="direc" class="button" target="_blank">Directions &#x27A4;</a>
+</p>
+        <br>
+<p>      <a href="sms:+14806526977&body=Hi!%2520We've%2520delivered%2520your%2520petition%2520form!" id="send" class="button">Send Delivery Confirmation</a></p>
                     <br>
 
-      <a href="sms:+14806526977&body=Hi!%2520We've%2520delivered%2520your%2520petition%2520form!" id="send" class="button" onclick="up()">Send Delivery Confirmation</a>
+    <p>  <a href="" id="call" class="button">Call</a>
+</p>
+
     </div>
 </body>
 
 
 <style>
+    /* #ff987f old salmon */
     body{
         width:100%;
         text-align: center;
@@ -51,15 +58,18 @@
         font-style: italic;
         float: left;
         color:white;
+        font-family: Georgia,sans-serif;
+    }
+    #name{
     }
     #send{
-        background-color: #ff987f;
-        border-color:#d3401c;
+        background-color: #ffc94f;
+        border-color:#d3781c;
         color:black;
     }
         #forward,#backward{
-        background-color: #ff987f;
-        border-color:#d3401c;
+        background-color: #5ebedb;
+        border-color:#0452a0;
         color:black;
             font-size:20pt;
             position: relative;
@@ -73,16 +83,24 @@
         margin:5px;
 text-decoration: none;
         font-weight: bold;
+                        background-color: #ffffff;
+        border-color:#c4c4c4;
+        color:black;
+    }
+    #count{
+        font-size: small;
+        color:#0452a0;
+        font-weight:bold;
     }
     
     #card{
         padding:25px;
         background-color: #efefef;
-        border:2px solid gray;
         height:500px;
     }
     #bar{
-        background-color: #ff987f;
+        background-color: #5ebedb;
+        border-bottom: 3px solid #0452a0;
         padding:10px;
         width:100%;
         margin:0;
@@ -95,6 +113,11 @@ text-decoration: none;
     #forward{
         float:right;
     }
+    #list{
+font-size:large;
+        text-align: center;
+        border:3px solid #0452a0;
+    }
 </style>
 
 <script>
@@ -102,7 +125,7 @@ text-decoration: none;
 document.getElementById('txtFileUpload').addEventListener('change', upload, false);
   var data = null;
     var index = 0;
-
+var add = null;
 //Parse CSV
  function upload(evt) {
      
@@ -124,18 +147,14 @@ document.getElementById('txtFileUpload').addEventListener('change', upload, fals
  }
     
     function initLoad(){
-        loadProf();
-        
+        loadProf();      
               for(let i=0;i<data.data.length;i++){ 
-         document.getElementById('list').innerHTML+="<option value='"+i+"'>"+data.data[i]["Address"]+"</option>"; 
+         document.getElementById('list').innerHTML+="<option value='"+i+"'>"+data.data[i]["Address"]+", "+data.data[i]["City"]+" "+data.data[index]["Zip5"]+"</option>"; 
               }
-    
-
     }
     
     function progress(){
             document.getElementById('count').innerHTML=index+1+"/"+data.data.length;
-
     }
     
     function loadProf(){ //Display data
@@ -144,30 +163,26 @@ document.getElementById('txtFileUpload').addEventListener('change', upload, fals
         var name = data.data[index]["First Name"]+" "+data.data[index]["Last Name"];
         var cell = data.data[index]["Cell"];
         
-        var add = data.data[index]["Address"]+", "+data.data[index]["City"]+" AZ "+data.data[index]["Zip5"];
+       add  = data.data[index]["Address"]+", "+data.data[index]["City"]+" AZ "+data.data[index]["Zip5"];
 
         
       document.getElementById('name').innerHTML=name;
-        document.getElementById('cell').innerHTML=cell;
-        document.getElementById('cell').href=cell;
-        document.getElementById('add').innerHTML=add;
-                document.getElementById('add').href="https://maps.google.com/?q="+add;
+ 
+                document.getElementById('call').href="tel:"+cell;
+
+                document.getElementById('direc').href="https://maps.google.com/?q="+add;
 
 
  document.getElementById('send').href="sms:"+cell+"&body=Hi! We've delivered your petition form!";
-
-   
     }
-       function back(){ //move the index back one
-        
-              if(index<0){
-            index=0;
-        }
-           index--;
-        loadProf();
-                   document.getElementById("list").selectedIndex = index;
 
-          
+    function back(){ //move the index back one
+        if(index<0){
+            index=0;
+            }
+    index--;
+        loadProf();
+        document.getElementById("list").selectedIndex = index;
     }
     
     function f(){ //move the index forward one
@@ -182,7 +197,6 @@ document.getElementById('txtFileUpload').addEventListener('change', upload, fals
 var x = document.getElementById("list").selectedIndex;
                    index = x;
                     loadProf();
-
 
     }
  

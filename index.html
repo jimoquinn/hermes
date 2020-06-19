@@ -15,11 +15,12 @@
     
     
     <div id="card">
+                            <select name="list" id="list" onchange="select()"></select>
+
         <p id="count"></p>
         <h1 id="name">Upload a .CSV file to get started!</h1>
-                    <select name="list" id="list" onchange="select()"></select>
 
-
+<p id="add"></p>
         <div id="r">
         <button class="button" id="backward" onclick="back()">&#x219e;</button>
                     </div>
@@ -116,7 +117,7 @@ text-decoration: none;
     }
     #list{
         text-align: center;
-        border:3px solid #0452a0;
+        border:1px solid #0452a0;
     }
 </style>
 
@@ -125,7 +126,6 @@ text-decoration: none;
 document.getElementById('txtFileUpload').addEventListener('change', upload, false);
   var data = null;
     var index = 0;
-var add = null;
 //Parse CSV
  function upload(evt) {
      
@@ -149,7 +149,7 @@ var add = null;
     function initLoad(){
         loadProf();      
               for(let i=0;i<data.data.length;i++){ 
-         document.getElementById('list').innerHTML+="<option value='"+i+"'>"+data.data[i]["Address"]+", "+data.data[i]["City"]+" "+data.data[index]["Zip5"]+"</option>"; 
+         document.getElementById('list').innerHTML+="<option value='"+i+"'>"+data.data[i]["Address"]+", "+data.data[i]["City"]+" "+data.data[i]["Zip5"]+"</option>"; 
               }
     }
     
@@ -163,7 +163,7 @@ var add = null;
         var name = data.data[index]["First Name"]+" "+data.data[index]["Last Name"];
         var cell = data.data[index]["Cell"];
         
-       add  = data.data[index]["Address"]+", "+data.data[index]["City"]+" AZ "+data.data[index]["Zip5"];
+      var add  = data.data[index]["Address"]+", "+data.data[index]["City"]+" AZ "+data.data[index]["Zip5"];
 
         
       document.getElementById('name').innerHTML=name;
@@ -171,6 +171,7 @@ var add = null;
                 document.getElementById('call').href="tel:"+cell;
 
                 document.getElementById('direc').href="https://maps.google.com/?q="+add;
+                document.getElementById('add').innerHTML=add;
 
 
  document.getElementById('send').href="sms:"+cell+"&body=Hi! We've delivered your petition form!";

@@ -26,11 +26,11 @@
 
 <p id="add"></p>
         <div id="r">
-        <button class="button" id="backward" onclick="back()">&#x219e;</button>
+        <button class="button" id="backward" onclick="back()">&#x2190;</button>
                     </div>
 
         <div i="l">        
-            <button class="button" id="forward" onclick="f()">&#x21a0;</button>
+            <button class="button" id="forward" onclick="f()">&#x2192;</button>
 </div>
      <br>
 
@@ -157,12 +157,14 @@ document.getElementById('txtFileUpload').addEventListener('change', upload, fals
  }
     
           function upload2() {
+               data = Papa.parse(csvData, {download:true, 
+                             header : true
+                            });
+              
 var csvData = document.getElementById('url').value;
                console.log(csvData);
 
- data = Papa.parse(csvData, {download:true, 
-                             header : true
-                            });
+
  console.log(data);
  
  };

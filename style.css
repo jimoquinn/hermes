@@ -22,7 +22,7 @@
         border-color:#d3781c;
         color:black;
     }
-        #forward,#backward{
+    #forward,#backward{
         background-color: #5ebedb;
         border-color:#0452a0;
         color:black;
@@ -64,7 +64,6 @@ text-decoration: none;
         background-color: #5ebedb;
         border-bottom: 3px solid #0452a0;
         padding:10px;
-        width:100%;
         margin:0;
     }
     
@@ -79,13 +78,7 @@ text-decoration: none;
         text-align: center;
         border:1px solid #0452a0;
     }
-    #preview{
-        color:#0452a0;
-        border:2px solid #0452a0;
-        position:absolute;
-        bottom:0;
-width:100%;
-    }
+
     #map{
         width:100%;
         height: 250px;

@@ -69,6 +69,7 @@
 </style>
 
 <script>
+
     //load MapQuest
     L.mapquest.key = 'jNkBAAWavx9SUrmRZCS3CIEM0yLXyyEo';
 
@@ -114,33 +115,27 @@ var csvData = document.getElementById('url').value;
  };
     
     function initLoad(){
-        loadProf();      
+        loadProf();  
+        map();
               for(let i=0;i<data.data.length;i++){ 
          document.getElementById('list').innerHTML+="<option value='"+i+"'>"+data.data[i]["Address"]+", "+data.data[i]["City"]+" "+data.data[i]["Zip5"]+"</option>"; 
               }
     }
     
     function map(){
-        
-       
-        var adds = [];
-
-      var starter = data.data[index]["Address"]+", "+data.data[index]["City"]+" "+data.data[index]["Zip5"];
-              var ender = data.data[index+24]["Address"]+", "+data.data[index+24]["City"]+" "+data.data[index+24]["Zip5"];
-
-        
+                   var adds= [];        
         for(let i=0;i<10;i++){
-            adds+= "'"+data.data[i]["Address"]+", "+data.data[i]["City"]+", AZ "+data.data[i]["Zip5"]+"',";
+            adds.push(data.data[i]["Address"]+", "+data.data[i]["City"]+", AZ "+data.data[i]["Zip5"]) ;
         }
-
-         
-                          
-                      
+        
                                       console.log(adds);
 
      L.mapquest.directions().route({  
           waypoints: adds,
-          optimizeWaypoints: true
+          optimizeWaypoints: true,
+           options: {
+              enhancedNarrative: true
+            }
         });
     }
     
@@ -156,7 +151,7 @@ var csvData = document.getElementById('url').value;
         var name = data.data[index]["First Name"]+" "+data.data[index]["Last Name"];
         var cell = data.data[index]["Cell"];
         
-      var add  = data.data[index]["Address"]+", "+data.data[index]["City"]+"AZ "+data.data[index]["Zip5"];
+      var add  = data.data[index]["Address"]+", "+data.data[index]["City"]+" AZ "+data.data[index]["Zip5"];
 
         
       document.getElementById('name').innerHTML=name;

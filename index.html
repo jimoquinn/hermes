@@ -4,7 +4,10 @@
     <link rel="apple-touch-icon" href="icon.png">
     <link rel="shortcut icon" href="icon.png">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
+    
+<script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
+<link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css"/>
+<link type="text/css" rel="stylesheet" href="style.css"/>
 
 
     <script src="papaparse.min.js"></script>
@@ -21,8 +24,11 @@
   </span>
     </div>
     
+             <div id="map">
     
+    </div>
     <div id="card">
+
                             <select name="list" id="list" onchange="select()"></select>
 
         <p id="count"></p>
@@ -47,116 +53,32 @@
     <p>  <a href="" id="call" class="button">Call</a>
 </p>
 
-      
-                <div id="prev">
-        
-        </div>
- <div id="preview">
-     <p>Up Next</p>
-            <p id="next"></p>
-        </div>
+         
+  
+
     </div>
     
-    <div id="card2">
-    
-    </div>
+
     
      
 </body>
 
 
 <style>
-    /* #ff987f old salmon */
-    body{
-        text-align: center;
-        padding:0px;
-        margin:0px;
-        font-family: sans-serif;
-        background-color:#5ebedb;
-        overflow: hidden;
-    }
-    #logo{
-        font-size: 25pt;
-        font-weight: bold;
-        font-style: italic;
-        float: left;
-        margin-left:10px;
-        color:white;
-        font-family: Georgia,sans-serif;
-    }
- 
-    #send{
-        background-color: #ffc94f;
-        border-color:#d3781c;
-        color:black;
-    }
-        #forward,#backward{
-        background-color: #5ebedb;
-        border-color:#0452a0;
-        color:black;
-            font-size:20pt;
-            position: relative;
-            height:200px;
-    }
-    
-    ##forward,#backward:active{
-                background-color: #0452a0;
-        border-color:#0452a0;
-        color:white;
-    }
-    .button{
-                padding:10px;
-        border:0px;
-        border-bottom: 3px solid;
-        border-radius: 5px;
-        margin:5px;
-text-decoration: none;
-        font-weight: bold;
-                        background-color: #ffffff;
-        border-color:#c4c4c4;
-        color:black;
-    }
-    #count{
-        font-size: small;
-        color:#0452a0;
-        font-weight:bold;
-    }
-    
-    #card{
-        padding:25px;
-        background-color: #efefef;
-        height:100%;
-        width: 100%;
-    }
-    #bar{
-        background-color: #5ebedb;
-        border-bottom: 3px solid #0452a0;
-        padding:10px;
-        width:100%;
-        margin:0;
-    }
-    
-    #backward{
-        float:left;
-    }
-    
-    #forward{
-        float:right;
-    }
-    #list{
-        text-align: center;
-        border:1px solid #0452a0;
-    }
-    #preview{
-        color:#0452a0;
-        border:2px solid #0452a0;
-        position:absolute;
-        bottom:0;
-width:100%;
-    }
+  
 </style>
 
 <script>
+    //load MapQuest
+    L.mapquest.key = 'jNkBAAWavx9SUrmRZCS3CIEM0yLXyyEo';
+
+// 'map' refers to a <div> element with the ID map
+L.mapquest.map('map', {
+  center: [37.7749, -122.4194],
+  layers: L.mapquest.tileLayer('map'),
+  zoom: 12
+});
+    
 //Get CSV file
 document.getElementById('txtFileUpload').addEventListener('change', upload, false);
   var data = null;
@@ -198,6 +120,32 @@ var csvData = document.getElementById('url').value;
               }
     }
     
+    function map(){
+        
+       
+        var adds = [];
+
+      var starter = data.data[index]["Address"]+", "+data.data[index]["City"]+" "+data.data[index]["Zip5"];
+              var ender = data.data[index+24]["Address"]+", "+data.data[index+24]["City"]+" "+data.data[index+24]["Zip5"];
+
+        
+        for(let i=0;i<10;i++){
+            adds+= "'"+data.data[i]["Address"]+", "+data.data[i]["City"]+", AZ "+data.data[i]["Zip5"]+"',";
+        }
+
+         
+                          
+                      
+                                      console.log(adds);
+
+     L.mapquest.directions().route({  
+          waypoints: adds,
+          optimizeWaypoints: true
+        });
+    }
+    
+    
+    
     function progress(){
             document.getElementById('count').innerHTML=index+1+"/"+data.data.length;
     }
@@ -208,15 +156,13 @@ var csvData = document.getElementById('url').value;
         var name = data.data[index]["First Name"]+" "+data.data[index]["Last Name"];
         var cell = data.data[index]["Cell"];
         
-      var add  = data.data[index]["Address"]+", "+data.data[index]["City"]+" AZ "+data.data[index]["Zip5"];
-      var nextAdd  = data.data[index+1]["Address"]+", "+data.data[index+1]["City"]+" AZ "+data.data[index+1]["Zip5"];
+      var add  = data.data[index]["Address"]+", "+data.data[index]["City"]+"AZ "+data.data[index]["Zip5"];
 
         
       document.getElementById('name').innerHTML=name;
                 document.getElementById('call').href="tel:"+cell;
                 document.getElementById('direc').href="https://maps.google.com/?q="+add;
                 document.getElementById('add').innerHTML=add;
-                document.getElementById('next').innerHTML=nextAdd;
 
 
  document.getElementById('send').href="sms:"+cell+"&body=Hi! We've delivered your InvestInEd petition form!";

@@ -24,7 +24,7 @@
   </span>
     </div>
     
-             <div id="map">
+             <div id="map" style="display:none">
     
     </div>
     <div id="card">
@@ -75,10 +75,14 @@
 
 // 'map' refers to a <div> element with the ID map
 L.mapquest.map('map', {
-  center: [37.7749, -122.4194],
+  center: [33.4255, -111.94],
   layers: L.mapquest.tileLayer('map'),
   zoom: 12
 });
+
+
+
+
     
 //Get CSV file
 document.getElementById('txtFileUpload').addEventListener('change', upload, false);
@@ -124,11 +128,12 @@ var csvData = document.getElementById('url').value;
     
     function map(){
                    var adds= [];        
-        for(let i=0;i<10;i++){
+        for(let i=index;i<index+10;i++){
             adds.push(data.data[i]["Address"]+", "+data.data[i]["City"]+", AZ "+data.data[i]["Zip5"]) ;
         }
+
         
-                                      console.log(adds);
+                                      console.log(test);
 
      L.mapquest.directions().route({  
           waypoints: adds,
@@ -139,6 +144,8 @@ var csvData = document.getElementById('url').value;
 
             }
         });
+        
+        
     }
     
     

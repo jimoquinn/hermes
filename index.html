@@ -49,9 +49,10 @@
         <br>
 <p>      <a href="sms:+14806526977&body=Hi!%2520We've%2520delivered%2520your%2520petition%2520form!" id="send" class="button">Send Delivery Confirmation</a></p>
                     <br>
+        <p>      <a href="sms:+14806526977&body=Hi!%2520Have you turned in your InvestInEd petition form yet? Click here to find drop off spots: https://investined.com/turn-in-your-petition/" class="button">Send Turn In Information</a></p>
 
-    <p>  <a href="" id="call" class="button">Call</a>
-</p>
+
+
 
          
   
@@ -170,6 +171,8 @@ var csvData = document.getElementById('url').value;
 
 
  document.getElementById('send').href="sms:"+cell+"&body=Hi! We've delivered your InvestInEd petition form!";
+         document.getElementById('turnin').href="sms:"+cell+"&body=Hi!%2520Have you turned in your InvestInEd petition form yet? Click here to find drop off spots: https://investined.com/turn-in-your-petition/";
+
     }
 
     function back(){ //move the index back one

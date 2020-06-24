@@ -3,7 +3,6 @@
         text-align: center;
         padding:0px;
         margin:0px;
-        width: 100%;
         font-family: sans-serif;
         background-color:#5ebedb;
         overflow: hidden;
@@ -17,6 +16,10 @@
         color:white;
         font-family: Georgia,sans-serif;
     }
+#messageText{
+    width: 500px;
+    height: 200px;
+}
  
     #send{
         background-color: #ffc94f;

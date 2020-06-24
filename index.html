@@ -13,17 +13,15 @@
     <script src="papaparse.min.js"></script>
     <title>Hermes</title>
 </head>
-<body ontouchstart=””>
+<body ontouchstart=”” onload="selectText()">
     <div id="bar"><span id="logo">H</span>  <input type="file" name="File Upload" id="txtFileUpload" accept=".csv" />
     <button onclick="initLoad()" class="button">Load</button>
         
         <span style="display:none">
-      
         <input type="text" placeholder="url" id="url">
             <button onclick="upload2()" class="button">URL load</button>
   </span>
     </div>
-    
              <div id="map" style="display:none">
     
     </div>
@@ -46,34 +44,28 @@
 
     <p>  <a href="" id="direc" class="button" target="_blank">Directions &#x27A4;</a>
 </p>
+        <p>Message Options</p>
+        <select id="messages" onchange="selectText()">
+        <option>Send Delivery Confirmation</option>
+        <option>Generic Follow Up</option>
+        <option>Send Fountain Hills Info</option>
+        <option>Custom</option>
+
+        </select>
+        
         <br>
-<p>      <a href="sms:+14806526977&body=Hi!%2520We've%2520delivered%2520your%2520petition%2520form!" id="send" class="button">Send Delivery Confirmation</a></p>
+        <br>
+        <textarea id="messageText" onchange="sendText()"> </textarea>
+<p>      <a href="sms:+14806526977&body=Hi!%2520We've%2520delivered%2520your%2520petition%2520form!" id="send" class="button">Send Message</a></p>
                     <br>
-        <p>      <a href="sms:+14806526977&body=Hi!%2520Have you turned in your InvestInEd petition form yet? Click here to find drop off spots: https://investined.com/turn-in-your-petition/" class="button" id="turnin">Send Turn In Information</a></p>
-
-
-
-
-         
-  
-
     </div>
-    
-
-    
      
 </body>
 
 
-<style>
-  
-</style>
-
 <script>
-
     //load MapQuest
     L.mapquest.key = 'jNkBAAWavx9SUrmRZCS3CIEM0yLXyyEo';
-
 // 'map' refers to a <div> element with the ID map
 L.mapquest.map('map', {
   center: [33.4255, -111.94],
@@ -81,9 +73,7 @@ L.mapquest.map('map', {
   zoom: 12
 });
 
-
-
-
+var cell; // the body of the text
     
 //Get CSV file
 document.getElementById('txtFileUpload').addEventListener('change', upload, false);
@@ -96,30 +86,24 @@ document.getElementById('txtFileUpload').addEventListener('change', upload, fals
  reader.readAsText(file);
  reader.onload = function(event) {
  var csvData = event.target.result;
- 
  data = Papa.parse(csvData, {header : true});
- 
  console.log(data);
- 
  };
-     
  reader.onerror = function() {
  alert('Unable to read ' + file.fileName);
  };
  }
     
-          function upload2() {
-var csvData = document.getElementById('url').value;
-               console.log(csvData);
-
+function upload2() {
+    var csvData = document.getElementById('url').value;
+               console.log(csvData);    
  data = Papa.parse(csvData, {download:true, 
                              header : true
                             });
  console.log(data);
- 
  };
     
-    function initLoad(){
+function initLoad(){
         loadProf();  
         map();
               for(let i=0;i<data.data.length;i++){ 
@@ -127,15 +111,12 @@ var csvData = document.getElementById('url').value;
               }
     }
     
-    function map(){
-                   var adds= [];        
-        for(let i=index;i<index+10;i++){
+function map(){
+        var adds= [];        
+    for(let i=index;i<index+10;i++){
             adds.push(data.data[i]["Address"]+", "+data.data[i]["City"]+", AZ "+data.data[i]["Zip5"]) ;
-        }
-
-        
-
-     L.mapquest.directions().route({  
+    }
+L.mapquest.directions().route({  
           waypoints: adds,
           optimizeWaypoints: true,
            options: {
@@ -143,58 +124,68 @@ var csvData = document.getElementById('url').value;
                          draggable: false
 
             }
-        });
-        
-        
+        });    
     }
-    
-    
-    
     function progress(){
             document.getElementById('count').innerHTML=index+1+"/"+data.data.length;
     }
+function selectText(){
+        var option = document.getElementById("messages").selectedIndex;
+        if(option==0){
+            document.getElementById("messageText").value = "Hi! We've delivered your InvestInEd petition form!";
+        }
+    if(option==1){
+       document.getElementById("messageText").value = "Hi— Were you able to collect signatures on the petition we dropped off? Can I text you the location to get the petition notarized and turn it in?";
+    }
+    if(option==2){
+        document.getElementById("messageText").value="Hi – Were you able to collect signatures on the petition we dropped off?  Here is the location in Fountain Hills where you can get your completed petition notarized and turned in. Or you can just sign a petition if you haven’t collected signatures. The Fountains United Methodist Church, 15300 N Fountain Hills Blvd, Fountain Hills Wednesday, June 24, 6:00 - 8:00 pm. Do you have any questions for me?";
+    }
+        if(option==3){
+            document.getElementById("messageText").value="";
+        }
+sendText();    
+}
     
-    function loadProf(){ //Display data
+function sendText(){
+    var t = document.getElementById("messageText").value;
+ document.getElementById('send').href="sms:&body="+cell+t;
+}
+    
+function loadProf(){ //Display data
                 progress();
 
         var name = data.data[index]["First Name"]+" "+data.data[index]["Last Name"];
-        var cell = data.data[index]["Cell"];
-        
+        cell = data.data[index]["Cell"];
+                        sendText(cell);
+
       var add  = data.data[index]["Address"]+", "+data.data[index]["City"]+" AZ "+data.data[index]["Zip5"];
 
         
       document.getElementById('name').innerHTML=name;
                 document.getElementById('direc').href="https://maps.google.com/?q="+add;
-                document.getElementById('add').innerHTML=add;
+                document.getElementById('add').innerHTML=add;    
+}
 
-
- document.getElementById('send').href="sms:"+cell+"&body=Hi! We've delivered your InvestInEd petition form!";
-         document.getElementById('turnin').href="sms:"+cell+"&body=Hi! Have you turned in your InvestInEd petition form yet? Click here to find drop off spots: https://investined.com/turn-in-your-petition/";
-
-    }
-
-    function back(){ //move the index back one
-        if(index<0){
+function back(){ //move the index back one
+    if(index<0){
             index=0;
-            }
-    index--;
+    }
+        index--;
         loadProf();
         document.getElementById("list").selectedIndex = index;
-    }
+}
     
-    function f(){ //move the index forward one
+function f(){ //move the index forward one
         index++;
         loadProf();
         document.getElementById("list").selectedIndex = index;
-    
     }
     
-    function select(){ //select address from dropdown
-
-var x = document.getElementById("list").selectedIndex;
-                   index = x;
-                    loadProf();
-
+function select(){ //select address from dropdown
+        var x = document.getElementById("list").selectedIndex;
+        index = x;
+        loadProf();
+    sendText();
     }
  
 </script>

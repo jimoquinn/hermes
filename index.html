@@ -148,7 +148,7 @@ sendText();
     
 function sendText(){
     var t = document.getElementById("messageText").value;
- document.getElementById('send').href="sms:&body="+cell+t;
+ document.getElementById('send').href="sms:&body='"+cell+t+"'";
 }
     
 function loadProf(){ //Display data

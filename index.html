@@ -49,6 +49,8 @@
         <option>Send Delivery Confirmation</option>
         <option>Generic Follow Up</option>
         <option>Send Fountain Hills Info</option>
+                    <option>Thank You Message</option>
+
         <option>Custom</option>
 
         </select>
@@ -140,7 +142,11 @@ function selectText(){
     if(option==2){
         document.getElementById("messageText").value="Hi–  Did you receive the Invest in Ed petition? Tomorrow we will have a petition site in Fountain Hills where you can notarize and turn in your petition.   Or just sign a petition!";
     }
-        if(option==3){
+    if(option==3){
+                document.getElementById("messageText").value="Thanks for taking action on Invest in Ed! Even in this time of crisis, you and other citizens across Arizona participated in local democracy.  We were successful:  the petitions were submitted with over 435,000 signatures!";
+
+    }
+        if(option==4){
             document.getElementById("messageText").value="";
         }
 sendText();    

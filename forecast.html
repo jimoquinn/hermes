@@ -852,7 +852,7 @@ function color(d){ //use this to color the states based on prob.
     return '#ffc9bb';
         }  
         if(d<=.60){
-    return '#ffffff';
+    return '#fcfcfc';
 }
         if(d<=.75){
     return '#c8dcfc';
@@ -864,6 +864,12 @@ function color(d){ //use this to color the states based on prob.
     return '#1e9af3';
 }  
     }
+    
+function colorS(d){
+        if(d>.4&&d<.6){
+        return '2px solid black';
+    }else{}
+}
     
     function tossup(d){
         if(d<.6 && d>.40){

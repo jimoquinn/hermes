@@ -85,6 +85,31 @@
         
         
         <div id="lower">
+            
+                  <h3 style="text-align: left">Key</h3>
+        <table id ="key">
+  <tr>
+    <th>>50%</th>
+    <th>>60%</th>
+    <th>>70%</th>
+    <th>>80%</th>
+    <th>>90%</th>
+  </tr>   
+  <tr>
+    <td style="border:2px solid;background-color: #deeafd"></td>
+    <td style="background-color: #bcd5fb"></td>
+    <td style="background-color: #97c1f9"></td>
+<td style="background-color: #6badf6"></td>
+<td style="background-color: #1e9af3"></td>
+  </tr>
+  <tr>
+    <td style="border:2px solid;background-color: #ffdfd6"></td>
+    <td style="background-color: #ffbeae"></td>
+    <td style="background-color: #ff9a85"></td>
+<td style="background-color: #ff715b"></td>
+      <td style="background-color: #ff352c"></td>
+  </tr> 
+</table>
             <h2>Likely Senate Composition</h2>
             <div id="states-container" style="text-align:center;">
                 <div class="dem">
@@ -104,28 +129,7 @@
             </div>
             <br>
             <br>
-            <h3 style="text-align: left">Key</h3>
-        <table id ="key">
-  <tr>
-    <th>50-60%</th>
-    <th>60-75%</th>
-    <th>75-95%</th>
-    <th>>95%</th>
-  </tr>
-            
-  <tr>
-    <td style="border:2px solid">Tossup</td>
-    <td style="background-color: #c8dcfc">Lean Dem</td>
-    <td style="background-color: #89baf8">Likely Dem</td>
-<td style="background-color: #2e9af3">Solid Dem</td>
-  </tr>
-  <tr>
-    <td style="border:2px solid">Tossup</td>
-    <td style="background-color: #ffc9bb">Lean GOP</td>
-    <td style="background-color: #ff8d77">Likely GOP</td>
-<td style="background-color: #ff352c">Solid GOP</td>
-  </tr> 
-</table>
+      
                         <h2>About</h2>
 <p>This Senate forecast combines polling and fundamentals such as fundraising to predict the vote share. It then simulates 10,000 possible different outcomes.</p>
             
@@ -842,7 +846,7 @@ if(x==14){
         }
     }
 }    
-function color(d){ //use this to color the states based on prob.
+function colorT(d){ //use this to color the states based on prob.
     if(d<=.05){
         return '#ff352c';
     } 
@@ -856,15 +860,48 @@ function color(d){ //use this to color the states based on prob.
     return '#fcfcfc';
 }
         if(d<=.75){
-    return '#c8dcfc';
+    return '#accbfa';
 }  
+    
         if(d<=.95){
-    return '#89baf8';
+    return '#7bb2f7';
 }  
         if(d<=1){
     return '#1e9af3';
 }  
-    }
+}
+function color(d){ //use this to color the states based on prob.
+    if(d<=.1){
+        return '#ff352c';
+    } 
+    if(d<=.2){
+        return '#ff715b';
+    } 
+        if(d<=.30){
+    return '#ff9a85';
+        }  
+                if(d<=.40){
+    return '#ffbeae';
+}
+            if(d<=.50){
+    return '#ffdfd6';
+}
+        if(d<=.60){
+    return '#deeafd';
+}
+        if(d<=.70){
+    return '#bcd5fb';
+}   
+        if(d<=.80){
+    return '#97c1f9';
+}
+        if(d<=.90){
+    return '#6badf6';
+}  
+        if(d<=1){
+    return '#1e9af3';
+}  
+}
     
 function colorS(d){
         if(d>.4&&d<.6){

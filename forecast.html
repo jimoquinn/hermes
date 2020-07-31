@@ -5,50 +5,43 @@
 <script src="jquery.js"></script>
   <script src="raphael.js"></script>
   <script src="jquery.usmap.js"></script>
+</head>
+
 <body>
-
-
-    <div id="container">
-        <div id="topline">
-        
+<div id="container">
+    <div id="topline">
         <h1 style="text-align: left">Senate Forecast</h1>
-
         <div class="dem">
             <span style="color:#292929;font-size: 10pt;text-align:left;">Dem. Outright Majority:</span>
             <br>
-    <span id="toplineD">62% chance</span>
+            <span id="toplineD">62% chance</span>
         </div>
-        <div class="gop">
+    <div class="gop">
         <span style="color:#292929;font-size: 10pt;text-align:left;">GOP Outright Majority:</span>
-                <br>
-    <span id="toplineR">28% chance</span>
-            </div>
+        <br>
+        <span id="toplineR">28% chance</span>
+    </div>
     <div id="bar">
         <div id="demProb"></div>
                 <div id="tieProb"></div>
                 <div id="repProb"></div>
-
-        </div>
-
+    </div>
     <div class="dem">
         <span>52 seats</span>
         <br>
         <span style="color:#292929;font-size: 10pt;text-align:left;">Average Seats</span>
-
         </div>
-                        <div class="gop">
+    <div class="gop">
         <span>48 seats</span>
-                            <br>
-                                    <span style="color:#292929;font-size: 10pt;text-align:left;">Average Seats</span>
-
-        </div>
-<br>
-
+        <br>
+        <span style="color:#292929;font-size: 10pt;text-align:left;">Average Seats</span>
+    </div>
+        <br>
         </div>
         <div id="info-container">
         
             <div id="infobox" style="display: none">
-        <span id="state">Mouse over states to see forecast</span>
+        <span id="state"></span>
     <div id="info" >
             <span style="color:#292929;font-size: 10pt;text-align:left;">Chance of winning:</span>
         <br>
@@ -62,20 +55,20 @@
     </div>
 
     <div id="bar2">
-                       <div id="notupD" class="meter"></div>
+        <div id="notupD" class="meter"></div>
         <div id="notupR" class="meter"></div>
-
-        </div>
+    </div>
         <span style="color:#292929;font-size: 10pt;text-align:left;" id="dCand"></span>
         <span style="color:#292929;font-size: 10pt;text-align:right;float:right" id="rCand"></span>
-                <div style="text-align: center">
-                                <span style="color:#292929;font-size: 10pt;text-align:left;">Est. Vote Margin:</span>
-<br>
-                    <span id="margin"></span></div>
+        <div style="text-align: center">
+            <span style="color:#292929;font-size: 10pt;text-align:left;">Est. Vote Margin:</span>
+            <br>
+            <span id="margin"></span>
+        </div>
                 <hr>
-        <table id="rater">
-<tr>
-<th>Held by</th>
+    <table id="rater">
+        <tr>
+    <th>Held by</th>
     <th>Rating</th>
             </tr>  
             <tr>
@@ -88,7 +81,7 @@
         
         </div>
 <div id="map-display">
-                        <div id="map" style="width: 50%; height: 100%;" onmouseout="hideInfo()"></div>
+        <div id="map" style="width:100%; height:100%;" onmouseout="hideInfo()"></div>
       
         <div id="GA" onmouseover="Georgia(7)" onmouseout="hideInfo()" style="margin:0;text-align:center;"><span>GA</span></div>
         

@@ -165,86 +165,91 @@
     </div>
 </body>
 <script>
-    var displayProbDem =63.3;
-        var displayProbTie =9.84;
+
+    var displayProbDem =62.48;
+        var displayProbTie =8.92;
         var displayProbGOP = 100 - (displayProbDem+displayProbTie);
       var index = 0;
     var dist = [
   {
     "DEM": 43,
-    "Prob %": 0.0066
+    "Prob %": 0.0065
   },
   {
     "DEM": 44,
-    "Prob %": 0.0128
+    "Prob %": 0.0145
   },
   {
     "DEM": 45,
-    "Prob %": 0.0233
+    "Prob %": 0.0241
   },
   {
     "DEM": 46,
-    "Prob %": 0.0346
+    "Prob %": 0.0349
   },
   {
     "DEM": 47,
-    "Prob %": 0.0511
+    "Prob %": 0.0484
   },
   {
     "DEM": 48,
-    "Prob %": 0.0619
+    "Prob %": 0.0668
   },
   {
     "DEM": 49,
-    "Prob %": 0.0801
+    "Prob %": 0.0841
   },
   {
     "DEM": 50,
-    "Prob %": 0.1018
+    "Prob %": 0.0892
   },
   {
     "DEM": 51,
-    "Prob %": 0.1113
+    "Prob %": 0.1036
   },
   {
     "DEM": 52,
-    "Prob %": 0.1106
+    "Prob %": 0.1016
   },
   {
     "DEM": 53,
-    "Prob %": 0.0947
+    "Prob %": 0.0998
   },
   {
     "DEM": 54,
-    "Prob %": 0.0796
+    "Prob %": 0.0804
   },
   {
     "DEM": 55,
-    "Prob %": 0.0677
+    "Prob %": 0.0661
   },
   {
     "DEM": 56,
-    "Prob %": 0.051
+    "Prob %": 0.0521
   },
   {
     "DEM": 57,
-    "Prob %": 0.036
+    "Prob %": 0.0417
   },
   {
     "DEM": 58,
-    "Prob %": 0.0266
+    "Prob %": 0.0294
   },
   {
     "DEM": 59,
-    "Prob %": 0.0189
+    "Prob %": 0.0207
   },
   {
     "DEM": 60,
-    "Prob %": 0.0119
+    "Prob %": 0.0127
   },
   {
     "DEM": 61,
-    "Prob %": 0.0063
+    "Prob %": 0.0087
+  },
+  {
+    "DEM": 62,
+    "Prob %": 0.0047
   }
 ];
     var states =[
@@ -252,37 +257,40 @@
     "State": "AL",
     "DEM": 44.85,
     "GOP": 52.15,
-    "DemProb": 0.2528,
-    "RepProb": 0.7472,
+    "DemProb": 0.2493,
+    "RepProb": 0.7507,
     "StateName": "Alabama",
     "DemCand": "Jones",
     "RepCand": "Tuberville",
     "Incumbent": "D",
-    "Pop": "4,903,185"
+    "Pop": "4,903,185",
+    "": 1222364.021
   },
   {
     "State": "AK",
     "DEM": 44.19,
     "GOP": 52.81,
-    "DemProb": 0.1379,
-    "RepProb": 0.8621,
+    "DemProb": 0.1457,
+    "RepProb": 0.8543,
     "StateName": "Alaska",
     "DemCand": "Gross",
     "RepCand": "Sullivan",
     "Incumbent": "R",
-    "Pop": "731,545"
+    "Pop": "731,545",
+    "": 106586.1065
   },
   {
     "State": "AZ",
-    "DEM": 52.95,
-    "GOP": 44.05,
-    "DemProb": 0.8501,
-    "RepProb": 0.1499,
+    "DEM": 52.91,
+    "GOP": 44.09,
+    "DemProb": 0.8434,
+    "RepProb": 0.1566,
     "StateName": "Arizona",
     "DemCand": "Kelly",
     "RepCand": "McSally",
     "Incumbent": "R",
-    "Pop": "7,278,717"
+    "Pop": "7,278,717",
+    "": 6138869.918
   },
   {
     "State": "AR",
@@ -294,379 +302,411 @@
     "DemCand": "Harrington",
     "RepCand": "Cotton",
     "Incumbent": "R",
-    "Pop": "3,017,804"
+    "Pop": "3,017,804",
+    "": 0
   },
   {
     "State": "CO",
-    "DEM": 52.34,
-    "GOP": 44.66,
-    "DemProb": 0.8113,
-    "RepProb": 0.1887,
+    "DEM": 52.58,
+    "GOP": 44.42,
+    "DemProb": 0.813,
+    "RepProb": 0.187,
     "StateName": "Colorado",
     "DemCand": "Hickenlooper",
     "RepCand": "Gardner",
     "Incumbent": "R",
-    "Pop": "5,758,736"
+    "Pop": "5,758,736",
+    "": 4681852.368
   },
   {
     "State": "DE",
     "DEM": 61.01,
     "GOP": 35.99,
-    "DemProb": 0.9924,
-    "RepProb": 0.0076,
+    "DemProb": 0.99,
+    "RepProb": 0.01,
     "StateName": "Delaware",
     "DemCand": "Coons",
     "RepCand": "Rep",
     "Incumbent": "D",
-    "Pop": "973,764"
+    "Pop": "973,764",
+    "": 964026.36
   },
   {
     "State": "GA",
-    "DEM": 45.96,
-    "GOP": 51.04,
-    "DemProb": 0.3119,
-    "RepProb": 0.6881,
+    "DEM": 45.93,
+    "GOP": 51.07,
+    "DemProb": 0.3148,
+    "RepProb": 0.6852,
     "StateName": "Georgia",
     "DemCand": "Ossoff",
     "RepCand": "Perdue",
     "Incumbent": "R",
-    "Pop": "10,617,423"
+    "Pop": "5,308,712",
+    "": 1671182.38
   },
   {
     "State": "GA2",
     "DEM": 46.08,
     "GOP": 50.92,
-    "DemProb": 0.3168,
-    "RepProb": 0.6832,
+    "DemProb": 0.3078,
+    "RepProb": 0.6922,
     "StateName": "Georgia Special",
     "DemCand": "Dem",
     "RepCand": "Rep",
     "Incumbent": "R",
-    "Pop": "10,617,423"
+    "Pop": "5,308,712",
+    "": 1634021.4
   },
   {
     "State": "ID",
     "DEM": 39.08,
     "GOP": 60.92,
-    "DemProb": 0.0185,
-    "RepProb": 0.9815,
+    "DemProb": 0.0187,
+    "RepProb": 0.9813,
     "StateName": "Idaho",
     "DemCand": "Jordan",
     "RepCand": "Risch",
     "Incumbent": "R",
-    "Pop": "1,787,065"
+    "Pop": "1,787,065",
+    "": 33418.1155
   },
   {
     "State": "IL",
     "DEM": 61.75,
     "GOP": 38.25,
-    "DemProb": 0.9883,
-    "RepProb": 0.0117,
+    "DemProb": 0.9873,
+    "RepProb": 0.0127,
     "StateName": "Illinois",
     "DemCand": "Durbin",
     "RepCand": "Curran",
     "Incumbent": "D",
-    "Pop": "12,671,821"
+    "Pop": "12,671,821",
+    "": 12510888.87
   },
   {
     "State": "IA",
-    "DEM": 48.87,
-    "GOP": 48.13,
-    "DemProb": 0.5398,
-    "RepProb": 0.4602,
+    "DEM": 48.76,
+    "GOP": 48.24,
+    "DemProb": 0.5176,
+    "RepProb": 0.4824,
     "StateName": "Iowa",
     "DemCand": "Greenfield",
     "RepCand": "Ernst",
     "Incumbent": "R",
-    "Pop": "3,155,070"
+    "Pop": "3,155,070",
+    "": 1633064.232
   },
   {
     "State": "KS",
     "DEM": 46.42,
     "GOP": 50.58,
-    "DemProb": 0.3966,
-    "RepProb": 0.6034,
+    "DemProb": 0.3893,
+    "RepProb": 0.6107,
     "StateName": "Kansas",
     "DemCand": "Dem",
     "RepCand": "Rep",
     "Incumbent": "R",
-    "Pop": "2,913,314"
+    "Pop": "2,913,314",
+    "": 1134153.14
   },
   {
     "State": "KY",
-    "DEM": 43.23,
-    "GOP": 53.77,
-    "DemProb": 0.1219,
-    "RepProb": 0.8781,
+    "DEM": 44,
+    "GOP": 53,
+    "DemProb": 0.183,
+    "RepProb": 0.817,
     "StateName": "Kentucky",
     "DemCand": "McGrath",
     "RepCand": "McConnell",
     "Incumbent": "R",
-    "Pop": "4,467,673"
+    "Pop": "4,467,673",
+    "": 817584.159
   },
   {
     "State": "LA",
     "DEM": 36.49,
     "GOP": 63.51,
-    "DemProb": 0.0051,
-    "RepProb": 0.9949,
+    "DemProb": 0.0042,
+    "RepProb": 0.9958,
     "StateName": "Louisana",
     "DemCand": "TBD",
     "RepCand": "Cassidy",
     "Incumbent": "R",
-    "Pop": "4,648,794"
+    "Pop": "4,648,794",
+    "": 19524.9348
   },
   {
     "State": "ME",
     "DEM": 51.45,
     "GOP": 45.55,
-    "DemProb": 0.7253,
-    "RepProb": 0.2747,
+    "DemProb": 0.7311,
+    "RepProb": 0.2689,
     "StateName": "Maine",
     "DemCand": "Gideon",
     "RepCand": "Collins",
     "Incumbent": "R",
-    "Pop": "1,344,212"
+    "Pop": "1,344,212",
+    "": 982753.3932
   },
   {
     "State": "MA",
     "DEM": 63.7,
     "GOP": 36.3,
-    "DemProb": 0.9946,
-    "RepProb": 0.0054,
+    "DemProb": 0.995,
+    "RepProb": 0.005,
     "StateName": "Massachusetts",
     "DemCand": "Dem",
     "RepCand": "Rep",
     "Incumbent": "D",
-    "Pop": "6,892,503"
+    "Pop": "6,892,503",
+    "": 6858040.485
   },
   {
     "State": "MI",
-    "DEM": 53.47,
-    "GOP": 43.53,
-    "DemProb": 0.8283,
-    "RepProb": 0.1717,
+    "DEM": 53.54,
+    "GOP": 43.46,
+    "DemProb": 0.8368,
+    "RepProb": 0.1632,
     "StateName": "Michigan",
     "DemCand": "Peters",
     "RepCand": "James",
     "Incumbent": "D",
-    "Pop": "6,892,503"
+    "Pop": "6,892,503",
+    "": 5767646.51
   },
   {
     "State": "MN",
-    "DEM": 57.31,
-    "GOP": 42.69,
-    "DemProb": 0.9226,
-    "RepProb": 0.0774,
+    "DEM": 55.68,
+    "GOP": 44.32,
+    "DemProb": 0.8528,
+    "RepProb": 0.1472,
     "StateName": "Minnesota",
     "DemCand": "Smith",
     "RepCand": "Rep",
     "Incumbent": "D",
-    "Pop": "5,639,632"
+    "Pop": "5,639,632",
+    "": 4809478.17
   },
   {
     "State": "MS",
     "DEM": 36.99,
     "GOP": 60.01,
-    "DemProb": 0.0915,
-    "RepProb": 0.9085,
+    "DemProb": 0.0936,
+    "RepProb": 0.9064,
     "StateName": "Mississippi",
     "DemCand": "Espy",
     "RepCand": "Hyde-Smith",
     "Incumbent": "R",
-    "Pop": "2,976,149"
+    "Pop": "2,976,149",
+    "": 278567.5464
   },
   {
     "State": "MT",
     "DEM": 47.17,
     "GOP": 49.83,
-    "DemProb": 0.3696,
-    "RepProb": 0.6304,
+    "DemProb": 0.374,
+    "RepProb": 0.626,
     "StateName": "Montana",
     "DemCand": "Bullock",
     "RepCand": "Daines",
     "Incumbent": "R",
-    "Pop": "1,068,778"
+    "Pop": "1,068,778",
+    "": 399722.972
   },
   {
     "State": "NE",
     "DEM": 37.61,
     "GOP": 62.39,
-    "DemProb": 0.01,
-    "RepProb": 0.99,
+    "DemProb": 0.0094,
+    "RepProb": 0.9906,
     "StateName": "Nebraska",
     "DemCand": "Janicek",
     "RepCand": "Sasse",
     "Incumbent": "R",
-    "Pop": "1,934,408"
+    "Pop": "1,934,408",
+    "": 18183.4352
   },
   {
     "State": "NH",
     "DEM": 56.58,
     "GOP": 40.42,
-    "DemProb": 0.9454,
-    "RepProb": 0.0546,
+    "DemProb": 0.9416,
+    "RepProb": 0.0584,
     "StateName": "New Hampshire",
     "DemCand": "Shaheen",
     "RepCand": "Rep",
     "Incumbent": "D",
-    "Pop": "1,359,711"
+    "Pop": "1,359,711",
+    "": 1280303.878
   },
   {
     "State": "NJ",
     "DEM": 60.13,
     "GOP": 36.87,
-    "DemProb": 0.9955,
-    "RepProb": 0.0045,
+    "DemProb": 0.9956,
+    "RepProb": 0.0044,
     "StateName": "New Jersey",
     "DemCand": "Booker",
     "RepCand": "Rep",
     "Incumbent": "D",
-    "Pop": "8,882,190"
+    "Pop": "8,882,190",
+    "": 8843108.364
   },
   {
     "State": "NM",
     "DEM": 57.36,
     "GOP": 42.64,
-    "DemProb": 0.9486,
-    "RepProb": 0.0514,
+    "DemProb": 0.9483,
+    "RepProb": 0.0517,
     "StateName": "New Mexico",
     "DemCand": "Ray Lujan",
     "RepCand": "Ronchetti",
     "Incumbent": "D",
-    "Pop": "2,096,829"
+    "Pop": "2,096,829",
+    "": 1988422.941
   },
   {
     "State": "NC",
-    "DEM": 51.68,
-    "GOP": 45.32,
-    "DemProb": 0.7831,
-    "RepProb": 0.2169,
+    "DEM": 51.53,
+    "GOP": 45.47,
+    "DemProb": 0.769,
+    "RepProb": 0.231,
     "StateName": "North Carolina",
     "DemCand": "Cunningham",
     "RepCand": "Tillis",
     "Incumbent": "R",
-    "Pop": "10,488,084"
+    "Pop": "10,488,084",
+    "": 8065336.596
   },
   {
     "State": "OK",
     "DEM": 42.17,
     "GOP": 57.83,
-    "DemProb": 0.0672,
-    "RepProb": 0.9328,
+    "DemProb": 0.0669,
+    "RepProb": 0.9331,
     "StateName": "Oklaholma",
     "DemCand": "Broyles",
     "RepCand": "Inhofe",
     "Incumbent": "R",
-    "Pop": "3,956,971"
+    "Pop": "3,956,971",
+    "": 264721.3599
   },
   {
     "State": "OR",
     "DEM": 63.24,
     "GOP": 36.76,
-    "DemProb": 0.993,
-    "RepProb": 0.007,
+    "DemProb": 0.9942,
+    "RepProb": 0.0058,
     "StateName": "Oregon",
     "DemCand": "Merkley",
     "RepCand": "Perkins",
     "Incumbent": "D",
-    "Pop": "4,217,737"
+    "Pop": "4,217,737",
+    "": 4193274.125
   },
   {
     "State": "RI",
     "DEM": 64.52,
     "GOP": 35.48,
-    "DemProb": 0.9977,
-    "RepProb": 0.0023,
+    "DemProb": 0.9968,
+    "RepProb": 0.0032,
     "StateName": "Rhode Island",
     "DemCand": "Reed",
     "RepCand": "Waters",
     "Incumbent": "D",
-    "Pop": "1,059,361"
+    "Pop": "1,059,361",
+    "": 1055971.045
   },
   {
     "State": "SC",
     "DEM": 44.39,
     "GOP": 52.61,
-    "DemProb": 0.1662,
-    "RepProb": 0.8338,
+    "DemProb": 0.1679,
+    "RepProb": 0.8321,
     "StateName": "South Carolina",
     "DemCand": "Harrison",
     "RepCand": "Graham",
     "Incumbent": "R",
-    "Pop": "5,148,714"
+    "Pop": "5,148,714",
+    "": 864469.0806
   },
   {
     "State": "SD",
     "DEM": 37.99,
     "GOP": 62.01,
-    "DemProb": 0.0138,
-    "RepProb": 0.9862,
+    "DemProb": 0.0095,
+    "RepProb": 0.9905,
     "StateName": "South Dakota",
     "DemCand": "Ahlers",
     "RepCand": "Rounds",
     "Incumbent": "R",
-    "Pop": "884,659"
+    "Pop": "884,659",
+    "": 8404.2605
   },
   {
     "State": "TN",
     "DEM": 43.31,
     "GOP": 56.69,
-    "DemProb": 0.1047,
-    "RepProb": 0.8953,
+    "DemProb": 0.1033,
+    "RepProb": 0.8967,
     "StateName": "Tennessee",
     "DemCand": "Dem",
     "RepCand": "Rep",
     "Incumbent": "R",
-    "Pop": "6,829,174"
+    "Pop": "6,829,174",
+    "": 705453.6742
   },
   {
     "State": "TX",
     "DEM": 43.03,
     "GOP": 53.97,
-    "DemProb": 0.1197,
-    "RepProb": 0.8803,
+    "DemProb": 0.1207,
+    "RepProb": 0.8793,
     "StateName": "Texas",
     "DemCand": "Hegar",
     "RepCand": "Cornyn",
     "Incumbent": "R",
-    "Pop": "28,995,881"
+    "Pop": "28,995,881",
+    "": 3499802.837
   },
   {
     "State": "VA",
     "DEM": 61.6,
     "GOP": 38.4,
-    "DemProb": 0.9881,
-    "RepProb": 0.0119,
+    "DemProb": 0.9872,
+    "RepProb": 0.0128,
     "StateName": "Virginia",
     "DemCand": "Warner",
     "RepCand": "Gade",
     "Incumbent": "D",
-    "Pop": "8,535,519"
+    "Pop": "8,535,519",
+    "": 8426264.357
   },
   {
     "State": "WV",
     "DEM": 39.61,
     "GOP": 60.39,
-    "DemProb": 0.0231,
-    "RepProb": 0.9769,
+    "DemProb": 0.0256,
+    "RepProb": 0.9744,
     "StateName": "West Virginia",
     "DemCand": "Swearengin",
     "RepCand": "Moore Capito",
     "Incumbent": "R",
-    "Pop": "1,792,147"
+    "Pop": "1,792,147",
+    "": 45878.9632
   },
   {
     "State": "WY",
     "DEM": 37.66,
     "GOP": 62.34,
-    "DemProb": 0.0085,
-    "RepProb": 0.9915,
+    "DemProb": 0.011,
+    "RepProb": 0.989,
     "StateName": "Wyoming",
     "DemCand": "Dem",
     "RepCand": "Rep",
     "Incumbent": "R",
-    "Pop": "578,759"
+    "Pop": "578,759",
+    "": 6366.349
   }
 ];
 var states2 = copy(states);
@@ -722,7 +762,7 @@ $(document).ready(function() {
             letterR = "rgba(255, 53, 44,.5)";  
         }
         else if(dist[x].DEM==50){
-         fill = "gray"; 
+         fill = "#525252"; 
             letter = "#cbcbcb"; 
                         letterR = "#cbcbcb"; 
         }
@@ -982,24 +1022,31 @@ function colorS(d){
             return '0';
         }
     }
+
 </script>
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap');
+
     body{
-        font-family: Helvetica,Arial,sans-serif;
+        font-family: HelveticaNeue,Arial,sans-serif;
         font-weight: bold;
+        background-color: whitesmoke;
     }
     #container{
         padding:30px;
     }
     #bar{
         width: 100%;
-        height:25px;
+        height:30px;
         float:left;
         display: inline-block;
     }
     #bar2{
         width: 100%;
         height:15px;
+    }
+    #toplineD,#toplineR{
+        font-size: 25pt;
     }
     #demProb{
 width:61.73%;
@@ -1015,8 +1062,8 @@ width:10.55%;
   45deg,
   #525252,
   #525252 5px,
-  #ffffff 5px,
-  #ffffff 10px
+  #f5f5f5 5px,
+  #f5f5f5 10px
 );
     float:left;
     }
@@ -1066,7 +1113,6 @@ width:27.72%;
     #info-container{
         width:225px;
         height:150px;
-        background-color: white;
         position: absolute;
    }
     #state{
@@ -1088,7 +1134,7 @@ width:27.72%;
     #topline{
         display: inline-block;
         border-bottom: 3px solid #292929;
-        padding-bottom: 10px;
+        padding-bottom: 45px;
         width:100%;    
     }
     #key,#dist{
@@ -1100,7 +1146,7 @@ width:27.72%;
     }
     td{
         padding:7px;
-        border:1px solid white;
+        border:1px solid whitesmoke;
         color:black;
     }
     #GA{
@@ -1123,12 +1169,13 @@ width:27.72%;
         height:500px;
         overflow:hidden;
         text-align: center;
-        margin-top: 50px;   
+        padding-top:25px;   
+        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAHElEQVQYV2NkQAOMMP6uXbv+u7m5McIFYBIYAgCfogQFw8lF4AAAAABJRU5ErkJggg==)repeat;
     }
     #block{
         height:30px;
         width:.9%;
-        outline:1px solid white;
+        outline:1px solid whitesmoke;
         background-color: #e0e0e0;
         padding:0px;
         color:#292929;
@@ -1153,7 +1200,7 @@ width:27.72%;
         opacity: .9;
     }
     #distBar{
-        height:20px;
+        height:25px;
         background-color: gray;
     }
     #dist td{

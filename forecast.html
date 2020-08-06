@@ -164,7 +164,7 @@
         var displayProbGOP = 100 - (displayProbDem+displayProbTie);
       var index = 0;
     var dist = [
-  {
+        {
     "DEM": 43,
     "Prob %": 0.0077
   },
@@ -652,8 +652,8 @@ $(document).ready(function() {
     drawStates();
     document.getElementById("GA").style.background=color(states[7].DemProb);
     //update topline numbers
-        document.getElementById("toplineD").innerHTML=Math.round(displayProbDem)+"% chance";
-        document.getElementById("toplineR").innerHTML=Math.round(displayProbGOP)+"% chance";
+        document.getElementById("toplineD").innerHTML=Math.round(displayProbDem)+"%";
+        document.getElementById("toplineR").innerHTML=Math.round(displayProbGOP)+"%";
         document.getElementById("demProb").style.width=displayProbDem+"%";
         document.getElementById("tieProb").style.width=displayProbTie+"%";
         document.getElementById("repProb").style.width=displayProbGOP+"%";

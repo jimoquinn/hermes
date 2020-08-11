@@ -4,35 +4,40 @@
 
 <script src="jquery.js"></script>
   <script src="raphael.js"></script>
+    <script src="odometer.js"></script>
+<link rel="stylesheet" href="odometer-theme-default.css" />
+
   <script src="jquery.usmap.js"></script>
 </head>
 
 <body>
 <div id="container">
     <div id="topline">
-        <h1 style="text-align: left">Senate Forecast</h1>
+        <h1 style="text-align:left">Senate Forecast 🗳</h1>
+            <h3 style="text-align: left">Chance of winning an outright majority:</h3>
+
         <div class="dem">
-            <span style="color:#292929;font-size: 10pt;text-align:left;">Dem. Outright Majority:</span>
+            <span style="color:#292929;font-size: 10pt;text-align:left;">Democrats:</span>
             <br>
-            <span id="toplineD"></span>
+            <span id="toplineD" class="odometer">50</span><span>%</span>
         </div>
     <div class="gop">
-        <span style="color:#292929;font-size: 10pt;text-align:left;">GOP Outright Majority:</span>
+        <span style="color:#292929;font-size: 10pt;text-align:left;">Republicans:</span>
         <br>
-        <span id="toplineR"></span>
+        <span id="toplineR" class="odometer">50</span><span>%</span>
     </div>
     <div id="bar">
         <div id="demProb"></div>
-                <div id="tieProb"></div>
-                <div id="repProb"></div>
+        <div id="tieProb"></div>
+        <div id="repProb"></div>
     </div>
     <div class="dem">
-        <span>52 seats</span>
+        <span><span id="dSeatAvg" class="odometer">47</span></span>
         <br>
         <span style="color:#292929;font-size: 10pt;text-align:left;">Average Seats</span>
         </div>
     <div class="gop">
-        <span>48 seats</span>
+        <span><span id="rSeatAvg" class="odometer">53</span></span>
         <br>
         <span style="color:#292929;font-size: 10pt;text-align:left;">Average Seats</span>
     </div>
@@ -40,32 +45,30 @@
         </div>
         <div id="info-container">
         
-            <div id="infobox" style="display: none">
-        <span id="state"></span>
+<div id="infobox" style="display: none">
+    <span id="state"></span>
     <div id="info" >
-            <span style="color:#292929;font-size: 10pt;text-align:left;">Chance of winning:</span>
+        <span style="color:#292929;font-size: 10pt;text-align:left;">Chance of winning:</span>
         <br>
-
-          <div class="dem">
-        <span id="probD"></span>
+        <div class="dem">
+            <span id="probD"></span>
         </div>
-                        <div class="gop">
-        <span id="probR"></span>
+        <div class="gop">
+            <span id="probR"></span>
         </div>
     </div>
-
     <div id="bar2">
         <div id="notupD" class="meter"></div>
         <div id="notupR" class="meter"></div>
     </div>
-        <span style="color:#292929;font-size: 10pt;text-align:left;" id="dCand"></span>
+        <span style="color:#292929;font-size: 10pt;text-align:left;" id="dCand" ></span>
         <span style="color:#292929;font-size: 10pt;text-align:right;float:right" id="rCand"></span>
         <div style="text-align: center">
             <span style="color:#292929;font-size: 10pt;text-align:left;">Est. Vote Margin:</span>
             <br>
             <span id="margin"></span>
         </div>
-                <hr>
+    <hr>
     <table id="rater">
         <tr>
     <th>Held by</th>
@@ -75,95 +78,86 @@
             <td id="current">D</td>
             <td id="rating">Safe D</td>
             </tr>
-
-                </table>
-            </div>  
-        
+    </table>
+</div>  
         </div>
 <div id="map-display">
         <div id="map" style="width:100%; height:100%;" onmouseout="hideInfo()"></div>
-      
-        <div id="GA" onmouseover="Georgia(7)" onmouseout="hideInfo()" style="margin:0;text-align:center;"><span>GA</span></div>
-        
-        </div>
-
-        
-        
-        <div id="lower">
-            
-                  <h3 style="text-align: left">Key</h3>
-        <table id ="key">
-  <tr>
-    <th>>50%</th>
-    <th>>60%</th>
-    <th>>70%</th>
-    <th>>80%</th>
-    <th>>90%</th>
-  </tr>   
-  <tr>
-    <td style="border:2px solid;background-color: #deeafd"></td>
-    <td style="background-color: #bcd5fb"></td>
-    <td style="background-color: #97c1f9"></td>
-<td style="background-color: #6badf6"></td>
-<td style="background-color: #1e9af3"></td>
-  </tr>
-  <tr>
-    <td style="border:2px solid;background-color: #ffdfd6"></td>
-    <td style="background-color: #ffbeae"></td>
-    <td style="background-color: #ff9a85"></td>
-<td style="background-color: #ff715b"></td>
-      <td style="background-color: #ff352c"></td>
-  </tr> 
-</table>
+        <div id="GA" onmouseover="Georgia(7)" onmouseout="hideInfo()" style="margin:0;text-align:center;"><span>GA</span></div>   
+</div>
+<div id="lower">
+    <h3 style="text-align: left">Key</h3>
+    <table id ="key">
+      <tr>
+        <th>>50%</th>
+        <th>>60%</th>
+        <th>>70%</th>
+        <th>>80%</th>
+        <th>>90%</th>
+      </tr>   
+      <tr>
+        <td style="border:2px solid;background-color: #deeafd"></td>
+        <td style="background-color: #bcd5fb"></td>
+        <td style="background-color: #97c1f9"></td>
+    <td style="background-color: #6badf6"></td>
+    <td style="background-color: #1e9af3"></td>
+      </tr>
+      <tr>
+        <td style="border:2px solid;background-color: #ffdfd6"></td>
+        <td style="background-color: #ffbeae"></td>
+        <td style="background-color: #ff9a85"></td>
+    <td style="background-color: #ff715b"></td>
+          <td style="background-color: #ff352c"></td>
+      </tr> 
+    </table>
+    <hr>
             <h2>Likely Senate Composition</h2>
-            <div id="states-container" style="text-align:center;">
-                <div class="dem">
-<span style="font-size: 12pt">35 Dem Seats Not Up</span>
-                </div>
-                                <div class="gop">
-<span style="font-size: 12pt">30 GOP Seats Not Up</span>
-                </div>
+    <p>This cycle Republicans have a large number of seats to defend, making their Senate math harder. Out of the 35 seats up, 23 are held by the GOP. To win control, Democrats will need to win at least 3 seats with the presidency or 4 without. They will need to make up for a likely defeat in <span onmouseover="Georgia(0)" onmouseout="hideInfo()" id="tag">Alabama</span> and keep an eye on Michigan, a state Trump won in 2016.</p>
 
-<span>EVEN</span>
-                <br>
-        <div style="width:103%;">
-            <div id="notupD" style="width:35%;background-color: #2e9af3;height:30px;"></div>
-                <div id="up"></div>
-                <div id="notupR" style="width:30%;background-color: #ff352c;height:30px;float:left;         outline: 1px solid white;"></div>
-                </div>
+    <button onclick="drawCurrentStates()">Current Senate</button>
+<button onclick="drawStates()">Forecasted Senate</button>
+
+<div id="states-container" style="text-align:center;">
+    <span>50</span>
+    <br>
+    <div id="up"></div>
             </div>
-            <br>
-            <br>
-      
-                        <h2>About</h2>
-<p>This Senate forecast combines polling and fundamentals such as fundraising to predict the vote share. It then simulates 10,000 possible different outcomes.</p>
-            
-            <h2>Notes</h2>
-<p>[1] As the Vice President breaks Senate ties, actual Senate control depends greatly on the outcome of the Presidential election. The win probabilities above are calculated from the chance either party wins 51 seats or more.</p>
-<p>[2] Dr. Al Gross of Alaska is an independent who will appear on the ballot as a Democrat and intends to caucus with the Democrats. He is counted as a Democrat for the purpose of this model.</p>
-
+<div class="dem">
+    <span style="font-size: 12pt" id="seatLabelD">↑ 35 Dem seats not up</span>
+</div>
+<div class="gop">
+    <span style="font-size: 12pt" id="seatLabelR">30 GOP seats not up ↑</span>
+</div>
+<br>
+<br>
+<h2>About</h2>
+    <p>This Senate forecast combines polling and fundamentals such as fundraising to predict the vote share. It then simulates 10,000 possible different outcomes.</p>         
 <h2>Possible Outcomes</h2>
-
-              <table id ="dist">
+<table id ="dist">
   <tr>
     <th>D</th>
     <th>R</th>
     <th>Prob</th>
     <th style="width:500px;"></th>
   </tr>       
-
 </table>
-            
-            </div>
+<h2>Notes</h2>
+    <p>[1] As the Vice President breaks Senate ties, actual Senate control depends greatly on the outcome of the Presidential election. The win probabilities above are calculated from the chance either party wins 51 seats or more.</p>
+    <p>[2] Dr. Al Gross of <span onmouseover="Georgia(1)" onmouseout="hideInfo()" id="tag">Alaska</span> is an independent who will appear on the ballot as a Democrat and intends to caucus with the Democrats. He is counted as a Democrat for the purpose of this model.</p>
+    <p>[3] The <span onmouseover="Georgia(7)" onmouseout="hideInfo()" id="tag">Georgia Special election</span> is a jungle primary with multiple Democrats and Republicans competing. If no candidate wins a majority outright, the two highest vote-getters will go to a runoff.</p>
     </div>
+</div>
 </body>
 <script>
+var dSeatAvg = 52;
+var rSeatAvg = 48;
 
-    var displayProbDem =62.43;
-        var displayProbTie =9.53;
-        var displayProbGOP = 100 - (displayProbDem+displayProbTie);
-      var index = 0;
-    var dist =[
+var displayProbDem =62.43;
+var displayProbTie =9.53;
+var displayProbGOP = 100 - (displayProbDem+displayProbTie);
+
+var index = 0;
+var dist =[
         {
     "DEM": 43,
     "Prob %": 0.0079
@@ -241,7 +235,7 @@
     "Prob %": 0.0055
   }
 ];
-    var states = [
+var states = [
         {
     "State": "AL",
     "DEM": 43.72,
@@ -631,22 +625,19 @@
 var states2 = copy(states);
 
         
-  function copy(x) { //copy the states to states2
+function copy(x) { //copy the states to states2
     return JSON.parse( JSON.stringify(x) );
 }
   
 function stateSort(){ //sort the states by probability
-
-          states2.sort(function (a, b) {
+    states2.sort(function (a, b) {
   return a.RepProb - b.RepProb;
 });    
     }
     
-    $(document).on('mousemove', function(e){
+$(document).on('mousemove', function(e){
    $('#infobox').offset({left: e.pageX-100, top: e.pageY-250})
 });
-
-
 
 $(document).ready(function() {
     drawStates();
@@ -654,6 +645,9 @@ $(document).ready(function() {
     //update topline numbers
         document.getElementById("toplineD").innerHTML=Math.round(displayProbDem)+"%";
         document.getElementById("toplineR").innerHTML=Math.round(displayProbGOP)+"%";
+            document.getElementById("dSeatAvg").innerHTML=dSeatAvg;
+            document.getElementById("rSeatAvg").innerHTML=rSeatAvg;
+
         document.getElementById("demProb").style.width=displayProbDem+"%";
         document.getElementById("tieProb").style.width=displayProbTie+"%";
         document.getElementById("repProb").style.width=displayProbGOP+"%";
@@ -688,24 +682,19 @@ $(document).ready(function() {
         
         var r = 100-dist[x].DEM;
                 var s = 2500*dist[x]["Prob %"];
-
     document.getElementById("dist").innerHTML+="<tr><td style='background-color:"+letter+"'>"+dist[x].DEM+"</td><td style='background-color:"+letterR+"'>"+r+"</td><td>"+Math.round(dist[x]["Prob %"]*100)+"%</td><td><div id='distBar'style='width:"+s+"px;background-color:"+fill+"'></div></td></tr>";
-
     }
     
 
 $('#map').usmap({
-         mouseover: function(event, data) {
+mouseover: function(event, data) {
                  index = states.findIndex(st => st.State === data.name); //change the index to state being moused-over.
-             console.log(states[index]);
-                if(states[index]==undefined||states[index]==null){
-                        document.getElementById("infobox").style.display("none");
+    console.log(states[index]);
+            if(states[index]==undefined||states[index]==null){
+                    document.getElementById("infobox").style.display("none");
              }else{
              }
-
-Georgia(index);
-      
-                
+Georgia(index);     
   },       
           stateStyles: {fill: '#e8e8e8',stroke:"#fff",'stroke-width':0},
 stateHoverAnimation: 0,
@@ -763,13 +752,9 @@ stateHoverAnimation: 0,
 labelRadius:0,
         labelBackingStyles:{fill:'#c9c8c8',stroke:0},
           stateHoverStyles: {'stroke-width': 3,stroke:'#292929'}
-
     });
-
   });
     
-
-
 function hideInfo(){ //hide infobox
         document.getElementById("infobox").style.display="none";
 }
@@ -786,8 +771,7 @@ var prob = Math.round(states[d].DemProb*100);
                 document.getElementById("probD").innerHTML="<1%";
                 document.getElementById("probR").innerHTML=">99%";    
                  }
-                 
-        else{
+    else{
                 document.getElementById("probD").innerHTML= prob+"%";
                 document.getElementById("probR").innerHTML= 100-prob+"%";
         }    
@@ -813,8 +797,7 @@ document.getElementById("current").style.color="#1e9af3";
     document.getElementById("current").style.color="#ff352c";   
 
 }
-
-        var margin = Math.round(states[d].DEM-states[d].GOP);
+var margin = Math.round(states[d].DEM-states[d].GOP);
                 if(margin>0){
                         document.getElementById("margin").innerHTML= states[d].DemCand+" +"+margin;
                         document.getElementById("margin").style.color= "#2e9af3";
@@ -826,22 +809,49 @@ document.getElementById("current").style.color="#1e9af3";
                   if(margin<0){
                         document.getElementById("margin").innerHTML= states[d].RepCand+" +"+Math.abs(margin);
                         document.getElementById("margin").style.color= "#ff352c"; 
-                 }
-             
+                 }    
     }
 
 
 function drawStates(){ //draw the expected makeup of the Senate.
         stateSort();
+        document.getElementById("up").innerHTML="";
+        document.getElementById("seatLabelD").innerHTML="↑ 35 Dem seats not up";
+        document.getElementById("seatLabelR").innerHTML="30 GOP seats not up ↑";
+
+    for (i=0;i<35;i++) {
+    document.getElementById("up").innerHTML+="<div class='blockD'></div>";
+    }
 
     for (x in states2) { 
         var index2 = states.findIndex(st => st.State === states2[x].State);
-        document.getElementById("up").innerHTML+="<div id='block' style='background-color:"+color(states2[x].DemProb)+";' onmouseover='Georgia("+index2+")' onmouseout='hideInfo()'><span></span></div>";
+        document.getElementById("up").innerHTML+="<div class='block' style='background-color:"+color(states2[x].DemProb)+";' onmouseover='Georgia("+index2+")' onmouseout='hideInfo()'></div>";
 if(x==14){
     document.getElementById("up").innerHTML+="<div id='maj'></div>";
         }
     }
-}    
+      for (i=0;i<30;i++) {
+    document.getElementById("up").innerHTML+="<div class='blockR'></div>";
+    }
+}
+    
+function drawCurrentStates(){ //draw the current makeup of the Senate.
+            document.getElementById("seatLabelD").innerHTML="47 Democratic Seats";
+            document.getElementById("seatLabelR").innerHTML="53 Democratic Seats";
+
+        document.getElementById("up").innerHTML="";
+
+    for (i=0;i<47;i++) {
+    document.getElementById("up").innerHTML+="<div class='block' style='background-color:#2e9af3'></div>";
+    }
+
+      for (i=0;i<53;i++) {
+    document.getElementById("up").innerHTML+="<div class='block' style='background-color:#ff352c'></div>";
+          if(i==2){
+    document.getElementById("up").innerHTML+="<div id='maj'></div>";
+        }
+    }
+}   
 function colorT(d){ //use this to color the states based on prob.
     if(d<=.05){
         return '#ff352c';
@@ -952,7 +962,7 @@ function colorS(d){
         background-color: whitesmoke;
     }
     #container{
-        padding:30px;
+        padding:15px;
     }
     #bar{
         width: 100%;
@@ -964,7 +974,7 @@ function colorS(d){
         width: 100%;
         height:15px;
     }
-    #toplineD,#toplineR{
+    #toplineD,#toplineR,#dSeatAvg,#rSeatAvg{
         font-size: 25pt;
     }
     #demProb{
@@ -1009,15 +1019,28 @@ width:27.72%;
     .dem{
         float:left;
         color: #2e9af3;
-        font-size:20pt;
+        font-size:21pt;
     }
     .gop{
         float:right;
         color: #ff352c;
-        font-size:20pt;
+        font-size:21pt;
         text-align: right;
     }
-    
+    button{
+    border: 2px solid #292929;
+        color:#292929;
+        font-weight: bold;
+                outline: none;
+padding: 5px;
+        margin: 0px;
+        text-align: center;
+        cursor: pointer;
+    }
+    button:hover{
+    background-color: #292929;
+        color:whitesmoke;
+    }
     .meter{
     height: 100%;
     display: block;
@@ -1054,7 +1077,7 @@ width:27.72%;
     #topline{
         display: inline-block;
         border-bottom: 3px solid #292929;
-        padding-bottom: 45px;
+        padding-bottom: 10px;
         width:100%;    
     }
     #key,#dist{
@@ -1084,6 +1107,13 @@ width:27.72%;
     #GA:hover{
         outline:3px solid #292929;
     }
+    #tag{
+        text-decoration: underline;
+        cursor:pointer;
+    }
+    #tag:hover{
+text-decoration: none;
+    }
     #map-display{
         width:100%;
         height:500px;
@@ -1092,17 +1122,31 @@ width:27.72%;
         padding-top:25px;   
         background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAHElEQVQYV2NkQAOMMP6uXbv+u7m5McIFYBIYAgCfogQFw8lF4AAAAABJRU5ErkJggg==)repeat;
     }
-    #block{
-        height:30px;
-        width:.9%;
+    #states-container{
+        width: 100%;
+        padding: 0;
+    }
+    .block,.blockD,.blockR{
+         height:30px;
+        width:1%;
+        padding:0px;
+                float:left;
+    }
+    .block{
         outline:1px solid whitesmoke;
         background-color: #e0e0e0;
-        padding:0px;
         color:#292929;
         float:left;
         text-align: center;
-        font-size:9pt;
         cursor:crosshair;
+    }
+    .blockD{
+        outline:1px solid whitesmoke;
+        background-color: rgba(4, 119, 218, 0.25);
+    }
+    .blockR{
+        background-color: rgba(212, 50, 1, 0.25);
+            outline:1px solid whitesmoke;
     }
      #maj{
         height:30px;
@@ -1112,10 +1156,9 @@ width:27.72%;
         float:left;
         text-align: center;
         font-size:9pt;
-         margin:1px;
          opacity: .9;
     }
-    #block:hover{
+    .block:hover{
         outline:3px solid #292929;
         opacity: .9;
     }

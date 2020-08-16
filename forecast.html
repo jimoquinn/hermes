@@ -58,15 +58,14 @@
         </div>
     </div>
     <div id="bar2">
-  
     </div>
-        <span style="color:#292929;font-size: 10pt;text-align:left;" id="dCand" ></span>
-        <span style="color:#292929;font-size: 10pt;text-align:right;float:right" id="rCand"></span>
-        <div style="text-align: center">
-            <span style="color:#292929;font-size: 10pt;text-align:left;">Est. Vote Margin:</span>
-            <br>
-            <span id="margin"></span>
-        </div>
+    <span style="color:#292929;font-size: 10pt;text-align:left;" id="dCand" ></span>
+    <span style="color:#292929;font-size: 10pt;text-align:right;float:right" id="rCand"></span>
+    <div style="text-align: center">
+        <span style="color:#292929;font-size: 10pt;text-align:left;">Est. Vote Margin:</span>
+        <br>
+        <span id="margin"></span>
+    </div>
     <hr>
     <table id="rater">
         <tr>
@@ -95,28 +94,27 @@
         <th>>90%</th>
       </tr>   
       <tr>
-        <td style="border:2px solid;background-color: #deeafd"></td>
-        <td style="background-color: #bcd5fb"></td>
-        <td style="background-color: #97c1f9"></td>
-    <td style="background-color: #6badf6"></td>
-    <td style="background-color: #1e9af3"></td>
+        <td style="border:2px solid;background-color: #deedfc"></td>
+        <td style="background-color: #bcdaf9"></td>
+        <td style="background-color: #98c9f5"></td>
+    <td style="background-color: #6db7f2"></td>
+    <td style="background-color: #28a6ee"></td>
       </tr>
       <tr>
-        <td style="border:2px solid;background-color: #ffdfd6"></td>
-        <td style="background-color: #ffbeae"></td>
-        <td style="background-color: #ff9a85"></td>
-    <td style="background-color: #ff715b"></td>
-          <td style="background-color: #ff352c"></td>
+        <td style="border:2px solid;background-color: #ffe1d7"></td>
+        <td style="background-color: #ffc2af"></td>
+        <td style="background-color: #ffa187"></td>
+    <td style="background-color: #f88161"></td>
+          <td style="background-color: #ee5e3c"></td>
       </tr> 
     </table>
     <hr>
-            <h2>Likely Senate Composition</h2>
-
+<h2>Likely Senate Composition</h2>
 <div id="states-container" style="text-align:center;">
     <span>50</span>
     <br>
     <div id="up"></div>
-            </div>
+</div>
 <div class="dem">
     <span style="font-size: 12pt" id="seatLabelD">↑ 35 Dem seats not up</span>
 </div>
@@ -664,7 +662,7 @@ $(document).ready(function() {
 
         var width = dist[x]["Prob %"];
         if(dist[x].DEM>50){
-         fill = "#2e9af3";  
+         fill = "#2798da";  
             letter = "rgba(46, 154, 243, 0.5)"; 
             letterR = "none";  
             if (dist[x].DEM==47){
@@ -674,7 +672,7 @@ $(document).ready(function() {
             }
         }
           else if(dist[x].DEM<50){
-         fill = "#ff352c"; 
+         fill = "#f8675b"; 
                           letter = "none";
             letterR = "rgba(255, 53, 44,.5)";  
         }
@@ -780,12 +778,12 @@ var prob = Math.round(states[d].DemProb*100);
         }    
     if(d==1||d==3){ //Special styling for Alaska
             document.getElementById("probD").style.color= "#78bc1a";
-        document.getElementById("bar2").style.background = "linear-gradient(90deg, #78bc1a "+prob+"%, #ff352c "+prob+"%)";
+        document.getElementById("bar2").style.background = "linear-gradient(90deg, #78bc1a "+prob+"%, #f8675b "+prob+"%)";
 
     }else{
-            document.getElementById("probD").style.color= "#2e9af3";
+            document.getElementById("probD").style.color= "#2798da";
             var rProb = 100 - prob;
-                document.getElementById("bar2").style.background = "linear-gradient(90deg, #2e9af3 "+prob+"%, #ff352c "+prob+"%)"
+                document.getElementById("bar2").style.background = "linear-gradient(90deg, #2798da "+prob+"%, #f8675b "+prob+"%)"
 
 }
 
@@ -797,15 +795,15 @@ var prob = Math.round(states[d].DemProb*100);
             document.getElementById("rating").innerHTML=rating(states[d].DemProb);
                 document.getElementById("rating").style.backgroundColor=colorT(states[d].DemProb);
 if(states[d].Incumbent=="D"){
-document.getElementById("current").style.color="#1e9af3";   
+document.getElementById("current").style.color="#2798da";   
 }else{
-    document.getElementById("current").style.color="#ff352c";   
+    document.getElementById("current").style.color="#f8675b";   
 
 }
 var margin = Math.round(states[d].DEM-states[d].GOP);
                 if(margin>0){
                         document.getElementById("margin").innerHTML= states[d].DemCand+" +"+margin;
-                        document.getElementById("margin").style.color= "#2e9af3";
+                        document.getElementById("margin").style.color= "#2798da";
                  }
                  if(margin==0){
                         document.getElementById("margin").innerHTML= "EVEN";
@@ -813,7 +811,7 @@ var margin = Math.round(states[d].DEM-states[d].GOP);
                  }
                   if(margin<0){
                         document.getElementById("margin").innerHTML= states[d].RepCand+" +"+Math.abs(margin);
-                        document.getElementById("margin").style.color= "#ff352c"; 
+                        document.getElementById("margin").style.color= "#f8675b"; 
                  }    
     }
 
@@ -842,14 +840,14 @@ if(x==14){
     
 function drawCurrentStates(){ //draw the current makeup of the Senate.
             document.getElementById("seatLabelD").innerHTML="47 Democratic Seats";
-            document.getElementById("seatLabelR").innerHTML="53 Democratic Seats";
+            document.getElementById("seatLabelR").innerHTML="53 Republican Seats";
 
         document.getElementById("up").innerHTML="";
     for (i=0;i<47;i++) {
-    document.getElementById("up").innerHTML+="<div class='block' style='background-color:#2e9af3'></div>";
+    document.getElementById("up").innerHTML+="<div class='block' style='background-color:#2798da'></div>";
     }
       for (i=0;i<53;i++) {
-    document.getElementById("up").innerHTML+="<div class='block' style='background-color:#ff352c'></div>";
+    document.getElementById("up").innerHTML+="<div class='block' style='background-color:#f8675b'></div>";
           if(i==2){
     document.getElementById("up").innerHTML+="<div id='maj'></div>";
         }
@@ -857,26 +855,26 @@ function drawCurrentStates(){ //draw the current makeup of the Senate.
 }   
 function colorT(d){ //use this to color the states based on prob.
     if(d<=.05){
-        return '#ff352c';
+        return '#ee5e3c';
     } 
     if(d<=.25){
-        return '#ff8d77';
+        return '#fd967a';
     } 
         if(d<=.40){
-    return '#ffc9bb';
+    return '#ffccbd';
         }  
         if(d<=.60){
     return '#fcfcfc';
 }
         if(d<=.75){
-    return '#accbfa';
+    return '#c8e0fa';
 }  
     
         if(d<=.95){
-    return '#7bb2f7';
+    return '#8ac3f4';
 }  
         if(d<=1){
-    return '#1e9af3';
+    return '#2798da';
 } 
 }
     function rating(d){ //use this to color the states based on prob.
@@ -903,7 +901,7 @@ function colorT(d){ //use this to color the states based on prob.
 }  
 }
     
-function color(d){ //use this to color the states based on prob.
+function colorZ(d){ //use this to color the states based on prob.
     if(d<=.1){
         return '#ff352c';
     } 
@@ -935,36 +933,36 @@ function color(d){ //use this to color the states based on prob.
     return '#1e9af3';
 }  
 }
-function colorZ(d){ //use this to color the states based on prob.
+function color(d){ //use this to color the states based on prob.
     if(d<=.1){
-        return '#e22131';
+        return '#f8675b';
     } 
     if(d<=.2){
-        return '#fa515f';
+        return '#ff887a';
     } 
         if(d<=.30){
-    return '#ff8483';
+    return '#ffa99c';
         }  
                 if(d<=.40){
-    return '#ffb0a4';
+    return '#ffc7bd';
 }
             if(d<=.50){
-    return '#ffd9c3';
+    return '#ffe3de';
 }
         if(d<=.60){
-    return '#bceae9';
+    return '#dceaf8';
 }
         if(d<=.70){
-    return '#97cded';
+    return '#b9d4f1';
 }   
         if(d<=.80){
-    return '#77aff1';
+    return '#93c0e9';
 }
         if(d<=.90){
-    return '#5691f3';
+    return '#68ace2';
 }  
         if(d<=1){
-    return '#2073f4';
+    return '#2798da';
 }  
 }    
 function colorS(d){
@@ -1017,7 +1015,7 @@ function colorS(d){
     #demProb{
 width:61.73%;
         height: 100%;
-        background-color: #2e9af3;
+        background-color: #2798da;
         float:left;
     }
      #tieProb{
@@ -1033,10 +1031,10 @@ width:10.55%;
 );
     float:left;
     }
-         #repProb{
-width:27.72%;
+#repProb{
+        width:27.72%;
         height: 100%;
-        background-color: #ff352c;
+        background-color: #f8675b;
                  float:left;
     }
     #info{
@@ -1055,12 +1053,12 @@ width:27.72%;
     }
     .dem{
         float:left;
-        color: #2e9af3;
+        color: #2798da;
         font-size:21pt;
     }
     .gop{
         float:right;
-        color: #ff352c;
+        color: #f8675b;
         font-size:21pt;
         text-align: right;
     }
@@ -1232,7 +1230,7 @@ border-bottom: 1px solid gray;
     }
 @media only screen and (max-width: 600px) {
     #map{
-        left:0;
+        left:4%;
     }
     #map-display{
         height:400px;

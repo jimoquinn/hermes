@@ -672,7 +672,7 @@ $(document).ready(function() {
             }
         }
           else if(dist[x].DEM<50){
-         fill = "#f8675b"; 
+         fill = "#ee5e3c"; 
                           letter = "none";
             letterR = "rgba(255, 53, 44,.5)";  
         }
@@ -778,12 +778,12 @@ var prob = Math.round(states[d].DemProb*100);
         }    
     if(d==1||d==3){ //Special styling for Alaska
             document.getElementById("probD").style.color= "#78bc1a";
-        document.getElementById("bar2").style.background = "linear-gradient(90deg, #78bc1a "+prob+"%, #f8675b "+prob+"%)";
+        document.getElementById("bar2").style.background = "linear-gradient(90deg, #78bc1a "+prob+"%, #ee5e3c "+prob+"%)";
 
     }else{
             document.getElementById("probD").style.color= "#2798da";
             var rProb = 100 - prob;
-                document.getElementById("bar2").style.background = "linear-gradient(90deg, #2798da "+prob+"%, #f8675b "+prob+"%)"
+                document.getElementById("bar2").style.background = "linear-gradient(90deg, #2798da "+prob+"%, #ee5e3c "+prob+"%)"
 
 }
 
@@ -811,7 +811,7 @@ var margin = Math.round(states[d].DEM-states[d].GOP);
                  }
                   if(margin<0){
                         document.getElementById("margin").innerHTML= states[d].RepCand+" +"+Math.abs(margin);
-                        document.getElementById("margin").style.color= "#f8675b"; 
+                        document.getElementById("margin").style.color= "#ee5e3c"; 
                  }    
     }
 
@@ -935,19 +935,19 @@ function colorZ(d){ //use this to color the states based on prob.
 }
 function color(d){ //use this to color the states based on prob.
     if(d<=.1){
-        return '#f8675b';
+        return '#ee5e3c';
     } 
     if(d<=.2){
-        return '#ff887a';
+        return '#f88161';
     } 
         if(d<=.30){
-    return '#ffa99c';
+    return '#ffa187';
         }  
                 if(d<=.40){
-    return '#ffc7bd';
+    return '#ffc2af';
 }
             if(d<=.50){
-    return '#ffe3de';
+    return '#ffe1d7';
 }
         if(d<=.60){
     return '#dceaf8';
@@ -1034,7 +1034,7 @@ width:10.55%;
 #repProb{
         width:27.72%;
         height: 100%;
-        background-color: #f8675b;
+        background-color: #ee5e3c;
                  float:left;
     }
     #info{
@@ -1058,7 +1058,7 @@ width:10.55%;
     }
     .gop{
         float:right;
-        color: #f8675b;
+        color: #ee5e3c;
         font-size:21pt;
         text-align: right;
     }
@@ -1105,7 +1105,7 @@ padding: 5px;
     }
   
      #notupR{
-        background-color: #ff352c;
+        background-color: #ee5e3c;
         width:100%;
         float: right;
     }

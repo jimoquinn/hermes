@@ -360,7 +360,11 @@ function parseSVGVertices( svgPath )
     "x": 652.241825319378,
     "y": 341.9280731993047
   },
-
+  {
+    "State": "MA",
+    "x": 870,
+    "y": 160
+  },
   {
     "State": "ME",
     "x": 890,
@@ -438,8 +442,8 @@ function parseSVGVertices( svgPath )
   },
   {
     "State": "NE",
-    "x": 437.06850110907936,
-    "y": 234.63146198294996
+    "x": 415,
+    "y": 220
   },
   {
     "State": "IA",
@@ -488,17 +492,20 @@ function parseSVGVertices( svgPath )
   },
 ];
 
-      for (i=0;i<31;i++) {
+      for (i=0;i<32;i++) {
           this.topLetter = R.text(tMap[i].x,tMap[i].y,tMap[i].State).attr({
         "font-size":'17px',
         'font-family':'Inconsolata',
         'stroke':'whitesmoke',
               'stroke-width':5,
+              'stroke-opacity':.9,
+              'fill':'white',
               'stroke-linejoin':'round',
         });
               this.topLetter = R.text(tMap[i].x,tMap[i].y,tMap[i].State).attr({
         "font-size":'17px',
         'font-family':'Inconsolata',
+        'fill':'#292929',
         'font-weight':'100'
         });
         
@@ -524,7 +531,7 @@ function parseSVGVertices( svgPath )
      */
     _initCreateLabels: function() {
       var R = this.paper; // shorter name for usage here
-      var neStates = ['NH', 'MA', 'RI', 'DE']; //any state put here will show up
+      var neStates = ['RI', 'DE']; //any state put here will show up
       
       // calculate the values for placing items
       var neBoxX = 860;
@@ -580,9 +587,9 @@ function parseSVGVertices( svgPath )
         }
         
         // add the text
-          /*this.labelTexts[state] = R.text(x+(shapeWidth/2), y+(shapeHeight/2), state).attr({        'stroke':'whitesmoke',
+          this.labelTexts[state] = R.text(x+(shapeWidth/2), y+(shapeHeight/2), state).attr({        'stroke':'whitesmoke',
               'stroke-width':5,
-        'stroke-linejoin': 'bevel'});*/
+        'stroke-linejoin': 'round'});
         this.labelTexts[state] = R.text(x+(shapeWidth/2), y+(shapeHeight/2), state).attr(stateAttr);
 
         // Create the hit areas

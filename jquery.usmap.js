@@ -493,7 +493,7 @@ function parseSVGVertices( svgPath )
         "font-size":'17px',
         'font-family':'Inconsolata',
         'stroke':'whitesmoke',
-              'stroke-width':3,
+              'stroke-width':5,
               'stroke-linejoin':'round',
         });
               this.topLetter = R.text(tMap[i].x,tMap[i].y,tMap[i].State).attr({

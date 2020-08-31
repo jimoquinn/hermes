@@ -1,11 +1,4 @@
-# Hermes
-Hermes is designed to aid in the delivery and retrival of ballot petition forms during COVID. 
-
-# What is Hermes?
-Hermes is a mobile web app designed to load voter info from a spreadsheet. It simplifies the process of looking up addresses on traditional paper sheets and allows for far easier texting and directions lookup.
-
-# How do I get started?
-To get started you will need to export your spreadsheet as a .csv file. Loading a .csv file on mobile is not the easiest. A better method is coming soon™. 
+Forked copy from this codebase: https://github.com/djrubio2/hermes
 
 - Make your spreadsheet has the proper headers:
 `First`

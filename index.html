@@ -58,6 +58,18 @@
         <br>
         <br>
         <textarea id="messageText" onchange="sendText()"> </textarea>
+        
+        <!-- Android 10 doesn't like sms: as the protocol, seems to work on iOS on the iPhone.  Does not work
+             on macos 14 and Safari, but imessage:// 
+
+        var ua = navigator.userAgent.toLowerCase();
+        var url = "sms:";
+        url += (ua.indexOf("iphone") > -1 || ua.indexOf("ipad") > -1) ? ";" : "?";
+        url += "body=" + encodeURIComponent("I'm at " + mapUrl + " @ " + pos.Address);
+        location.href = url; 
+
+        -->
+
 <p>      <a href="sms:&body=Hi!%2520We've%2520delivered%2520your%2520petition%2520form!" id="send" class="button">Send Message</a></p>
                     <br>
     </div>
@@ -194,4 +206,49 @@ function select(){ //select address from dropdown
     sendText();
     }
  
+    /**
+     *
+     * Plinks is based on this blog post I wrote earlier this year:
+     * http://blog.julianklotz.de/2015/03/14/the-sms-uri-scheme/
+     * 
+     * MIT license.
+     *
+     */
+    
+    /* http://blog.julianklotz.de/the-sms-uri-scheme/ */
+	function isIosDevice ()  {
+		var ua = navigator.userAgent.toLowerCase();
+		if (ua.indexOf("iphone") > -1 || ua.indexOf("ipad") > -1) {
+			return true;
+		} else {
+			return false;
+		}
+	})
+
+	/**
+	 * Call plinks.smsLink('myMessage') to get a proper SMS link href
+	 * The phone number cannot be pre-populated.
+	 */
+	function smsLink (message)  {
+		var msg = encodeURIComponent(message), href;
+
+		// No more support for iOS 6 + 7
+		if(isIosDevice) {
+			href = "sms:&body=" + msg;
+		} else {
+			href = "sms:?body=" + msg;
+		}
+
+		return href
+	}
+
+	function whatsAppLink (message) {
+		var msg = encodeURIComponent(message), href;
+		href = "whatsapp://send?text=" + msg;
+
+		return href
+	}
+
+
+    
 </script>
